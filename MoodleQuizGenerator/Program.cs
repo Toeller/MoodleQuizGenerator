@@ -31,6 +31,9 @@ namespace MoodleQuizGenerator
             }
             List<Quizfrage> quizfragen = modelCSV.suchen(new Quizfrage("", "", "", "", "", "", "", "", "", "", "", ""), praefix);
 
+            // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
+            (modelXML as ModelXML).Path = praefix + ".xml";
+
             foreach (Quizfrage quizfrage in quizfragen)
             {
                 modelXML.speichern(quizfrage);

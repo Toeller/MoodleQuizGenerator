@@ -13,6 +13,7 @@ namespace MoodleQuizGenerator
         private IController controller;
         private IView view;
         private string path="dasIsteinTest.xml";
+        public string Path { get => path; set => path = value; }
         IController IModel.Controller { set => controller = value; }
         IView IModel.View { set => view = value; }
 
