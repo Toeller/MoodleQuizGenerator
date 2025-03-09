@@ -1,6 +1,6 @@
 ﻿namespace MoodleQuizGenerator
 {
-    internal interface IView
+    public interface IView
     {
         IModel Model { set; }
         IController Controller { set; }
