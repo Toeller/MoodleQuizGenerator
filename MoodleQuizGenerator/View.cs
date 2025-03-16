@@ -3,10 +3,12 @@ namespace MoodleQuizGenerator
 {
     internal class View : IView
     {
-        private IModel model;
+        private IModel modelQuelle;
+        private IModel modelZiel;
         private IController controller;
-        IModel IView.Model { set => model=value; }
+        IModel IView.ModelQuelle { set => modelQuelle=value; }
         IController IView.Controller { set => controller=value; }
+        IModel IView.ModelZiel { set => modelZiel=value; }
 
         void IView.anzeigen(List<Quizfrage> quizfragenListe)
         {

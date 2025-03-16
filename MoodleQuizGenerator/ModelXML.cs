@@ -100,10 +100,7 @@ namespace MoodleQuizGenerator
 
         }
 
-        List<Quizfrage> IModel.suchen(Quizfrage quizfrage, string praefix, bool anzahlFragenFix)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public ModelXML()
         {
@@ -131,6 +128,16 @@ namespace MoodleQuizGenerator
                         new XAttribute("format", "moodle_auto_format"),
                         new XElement("text", "Standardkategorie für Fragen, die im Kontext 'Ausdenken' freigegeben sind.")),
                     new XElement("idnumber"))));
+        }
+
+        List<Quizfrage> IModel.suchen(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Quizfrage> IModel.suchen(Quizfrage quizfrage, string praefix, bool anzahlFragenFix, string path)
+        {
+            throw new NotImplementedException();
         }
     }
 }

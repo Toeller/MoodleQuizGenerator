@@ -2,7 +2,8 @@
 {
     public interface IView
     {
-        IModel Model { set; }
+        IModel ModelQuelle { set; }
+        IModel ModelZiel { set; }
         IController Controller { set; }
 
 
