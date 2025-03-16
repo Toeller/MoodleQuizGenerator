@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace MoodleQuizGenerator
 {
-    internal class ModelXML : IModel
+    public class ModelXML : IModel
     {
         private XDocument doc;
         private IController controller;
@@ -42,7 +42,7 @@ namespace MoodleQuizGenerator
                     new XAttribute("format", "html"),
                 new XElement("text")),
             new XElement("defaultegrade", Defaultgrade),
-            new XElement("penalty", penalty),
+            new XElement("penalty", Penalty),
             new XElement("hidden","0"),
             new XElement("idnumber"),
             new XElement("single","false"),
