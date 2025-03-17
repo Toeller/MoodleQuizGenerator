@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using MoodleQuizGenerator;
+using System.Xml.Linq;
 
 namespace MQGMSTest
 {
@@ -8,13 +9,13 @@ namespace MQGMSTest
         [TestMethod]
         public void TestMethod1()
         {
-            // Arrange
+            //Arrange
             IModel model = new ModelXML();
 
             //String
             string defaultgrade = "1";
             string penalty = "2";
-            string nameKategorie = "HabIchMirAusgedacht";
+            string nameKategorie = "MQGImport" + DateTime.Now.ToString("yyMMdd");
 
 
             string fragenummer = "42";
@@ -107,8 +108,6 @@ namespace MQGMSTest
             // Assert
             XDocument actual = XDocument.Load("dasIsteinTest.xml");
             Assert.AreEqual(expected.ToString(), actual.ToString(), "XML was not created correctly");
-
-
 
         }
     }
