@@ -64,6 +64,9 @@ namespace MoodleQuizGenerator
             (modelXML as ModelXML).Path = praefix + ".xml";
 
             // Kategoriename gleichsetzen mit dem Praefix
+
+            //Überschreibt das setzen im Konstruktor!!!
+
             (modelXML as ModelXML).defineInitialXElement(praefix);
 
             foreach (Quizfrage quizfrage in quizfragen)

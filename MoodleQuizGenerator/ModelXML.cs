@@ -115,7 +115,7 @@ namespace MoodleQuizGenerator
             //}
             //else
             //{
-                string nameKategorie = "HabIchMirAusgedacht";
+                string nameKategorie = "MQGImport"+DateTime.Now.ToString("yyMMdd");
                 defineInitialXElement(nameKategorie);
         }
 
