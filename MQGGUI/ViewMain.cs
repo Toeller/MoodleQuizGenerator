@@ -44,19 +44,19 @@ namespace MQGGUI
                         checkBoxAntwort1.Checked = true;
                     else
                         checkBoxAntwort1.Checked = false;
-                    
+
                     checkBoxAntwort2.Text = aktueleQuizfrage.Antworten[1];
                     if (double.Parse(aktueleQuizfrage.Fractions[1]) > 0)
                         checkBoxAntwort2.Checked = true;
                     else
                         checkBoxAntwort2.Checked = false;
-                    
+
                     checkBoxAntwort3.Text = aktueleQuizfrage.Antworten[2];
                     if (double.Parse(aktueleQuizfrage.Fractions[2]) > 0)
                         checkBoxAntwort3.Checked = true;
                     else
                         checkBoxAntwort3.Checked = false;
-                    
+
                     checkBoxAntwort4.Text = aktueleQuizfrage.Antworten[3];
                     if (double.Parse(aktueleQuizfrage.Fractions[3]) > 0)
                         checkBoxAntwort4.Checked = true;
@@ -131,14 +131,14 @@ namespace MQGGUI
 
         private void buttonBearbeiten_Click(object sender, EventArgs e)
         {
-            if(buttonBearbeiten.Text=="bearbeiten")
+            if (buttonBearbeiten.Text == "bearbeiten")
             {
                 buttonBearbeiten.Text = "speichern";
-                
-                textBoxFrage.Text=labelFrage.Text;
-                labelFrage.Text =string.Empty;
+
+                textBoxFrage.Text = labelFrage.Text;
+                labelFrage.Text = string.Empty;
                 textBoxFrage.Visible = true;
-                labelFrage.Visible=false;
+                labelFrage.Visible = false;
 
                 textBoxAntwort1.Text = checkBoxAntwort1.Text;
                 checkBoxAntwort1.Text = string.Empty;
@@ -160,25 +160,25 @@ namespace MQGGUI
                 checkBoxAntwort5.Text = string.Empty;
                 textBoxAntwort5.Visible = true;
 
-                buttonVor.Visible= false;
-                buttonZurueck.Visible= false;
+                buttonVor.Visible = false;
+                buttonZurueck.Visible = false;
 
             }
             else
             {
-                
+
                 buttonBearbeiten.Text = "bearbeiten";
                 buttonVor.Visible = true;
                 buttonZurueck.Visible = true;
 
-                aktueleQuizfrage.Frage=textBoxFrage.Text;
-                labelFrage.Text=textBoxFrage.Text;
+                aktueleQuizfrage.Frage = textBoxFrage.Text;
+                labelFrage.Text = textBoxFrage.Text;
                 textBoxFrage.Text = string.Empty;
                 textBoxFrage.Visible = false;
                 labelFrage.Visible = true;
 
                 aktueleQuizfrage.Antworten[0] = textBoxAntwort1.Text;
-                checkBoxAntwort1.Text=textBoxAntwort1.Text;
+                checkBoxAntwort1.Text = textBoxAntwort1.Text;
                 textBoxAntwort1.Text = string.Empty;
                 textBoxAntwort1.Visible = false;
 
@@ -217,17 +217,17 @@ namespace MQGGUI
                 if (checkBoxAntwort5.Checked)
                     rcount++;
 
-                string fractionR= Convert.ToString(Math.Round(
-                    (100 / Convert.ToDouble(rcount)), 5      )
+                string fractionR = Convert.ToString(Math.Round(
+                    (100 / Convert.ToDouble(rcount)), 5)
                              , new System.Globalization.CultureInfo("en-US"));
                 string fractionF = Convert.ToString(Math.Round(
                     ((double)-100.0 / (5 - Convert.ToDouble(rcount))), 5)
                              , new System.Globalization.CultureInfo("en-US"));
                 if (checkBoxAntwort1.Checked)
-                    aktueleQuizfrage.Fractions[0]= fractionR;
+                    aktueleQuizfrage.Fractions[0] = fractionR;
                 else
                     aktueleQuizfrage.Fractions[0] = fractionF;
-                
+
                 if (checkBoxAntwort2.Checked)
                     aktueleQuizfrage.Fractions[1] = fractionR;
                 else
@@ -275,6 +275,11 @@ namespace MQGGUI
 
 
             }
+        }
+
+        private void buttonNeu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

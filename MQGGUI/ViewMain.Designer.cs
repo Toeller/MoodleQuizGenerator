@@ -57,6 +57,8 @@
             labelFrage = new Label();
             buttonPfadwahl = new Button();
             buttonPraefixwahl = new Button();
+            buttonLoeschen = new Button();
+            buttonNeu = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAnzahlFragen).BeginInit();
             groupBoxVorschau.SuspendLayout();
             SuspendLayout();
@@ -74,13 +76,13 @@
             // 
             textBoxPraefix.Location = new Point(12, 94);
             textBoxPraefix.Name = "textBoxPraefix";
-            textBoxPraefix.Size = new Size(100, 23);
+            textBoxPraefix.Size = new Size(292, 23);
             textBoxPraefix.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(184, 76);
+            label2.Location = new Point(12, 141);
             label2.Name = "label2";
             label2.Size = new Size(82, 15);
             label2.TabIndex = 2;
@@ -88,7 +90,7 @@
             // 
             // numericUpDownAnzahlFragen
             // 
-            numericUpDownAnzahlFragen.Location = new Point(184, 95);
+            numericUpDownAnzahlFragen.Location = new Point(12, 159);
             numericUpDownAnzahlFragen.Name = "numericUpDownAnzahlFragen";
             numericUpDownAnzahlFragen.Size = new Size(120, 23);
             numericUpDownAnzahlFragen.TabIndex = 4;
@@ -97,7 +99,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(310, 76);
+            label3.Location = new Point(138, 141);
             label3.Name = "label3";
             label3.Size = new Size(46, 15);
             label3.TabIndex = 5;
@@ -106,7 +108,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(416, 77);
+            label4.Location = new Point(244, 141);
             label4.Name = "label4";
             label4.Size = new Size(74, 15);
             label4.TabIndex = 6;
@@ -114,14 +116,14 @@
             // 
             // textBoxPenalty
             // 
-            textBoxPenalty.Location = new Point(310, 95);
+            textBoxPenalty.Location = new Point(138, 159);
             textBoxPenalty.Name = "textBoxPenalty";
             textBoxPenalty.Size = new Size(100, 23);
             textBoxPenalty.TabIndex = 7;
             // 
             // textBoxDefaultgrade
             // 
-            textBoxDefaultgrade.Location = new Point(416, 95);
+            textBoxDefaultgrade.Location = new Point(244, 158);
             textBoxDefaultgrade.Name = "textBoxDefaultgrade";
             textBoxDefaultgrade.Size = new Size(100, 23);
             textBoxDefaultgrade.TabIndex = 8;
@@ -144,7 +146,7 @@
             // 
             // buttonImport
             // 
-            buttonImport.Location = new Point(12, 147);
+            buttonImport.Location = new Point(12, 199);
             buttonImport.Name = "buttonImport";
             buttonImport.Size = new Size(100, 23);
             buttonImport.TabIndex = 11;
@@ -154,6 +156,8 @@
             // 
             // groupBoxVorschau
             // 
+            groupBoxVorschau.Controls.Add(buttonNeu);
+            groupBoxVorschau.Controls.Add(buttonLoeschen);
             groupBoxVorschau.Controls.Add(buttonBearbeiten);
             groupBoxVorschau.Controls.Add(textBoxAntwort5);
             groupBoxVorschau.Controls.Add(textBoxAntwort4);
@@ -169,7 +173,7 @@
             groupBoxVorschau.Controls.Add(checkBoxAntwort2);
             groupBoxVorschau.Controls.Add(checkBoxAntwort1);
             groupBoxVorschau.Controls.Add(labelFrage);
-            groupBoxVorschau.Location = new Point(12, 194);
+            groupBoxVorschau.Location = new Point(12, 228);
             groupBoxVorschau.Name = "groupBoxVorschau";
             groupBoxVorschau.Size = new Size(504, 244);
             groupBoxVorschau.TabIndex = 12;
@@ -178,7 +182,7 @@
             // 
             // buttonBearbeiten
             // 
-            buttonBearbeiten.Location = new Point(192, 200);
+            buttonBearbeiten.Location = new Point(217, 200);
             buttonBearbeiten.Name = "buttonBearbeiten";
             buttonBearbeiten.Size = new Size(75, 23);
             buttonBearbeiten.TabIndex = 14;
@@ -236,7 +240,7 @@
             // 
             // buttonVor
             // 
-            buttonVor.Location = new Point(357, 200);
+            buttonVor.Location = new Point(423, 200);
             buttonVor.Name = "buttonVor";
             buttonVor.Size = new Size(75, 23);
             buttonVor.TabIndex = 7;
@@ -325,7 +329,7 @@
             // 
             // buttonPraefixwahl
             // 
-            buttonPraefixwahl.Location = new Point(118, 93);
+            buttonPraefixwahl.Location = new Point(315, 94);
             buttonPraefixwahl.Name = "buttonPraefixwahl";
             buttonPraefixwahl.Size = new Size(29, 23);
             buttonPraefixwahl.TabIndex = 14;
@@ -333,11 +337,30 @@
             buttonPraefixwahl.UseVisualStyleBackColor = true;
             buttonPraefixwahl.Click += buttonPraefixwahl_Click;
             // 
+            // buttonLoeschen
+            // 
+            buttonLoeschen.Location = new Point(298, 200);
+            buttonLoeschen.Name = "buttonLoeschen";
+            buttonLoeschen.Size = new Size(75, 23);
+            buttonLoeschen.TabIndex = 15;
+            buttonLoeschen.Text = "löschen";
+            buttonLoeschen.UseVisualStyleBackColor = true;
+            // 
+            // buttonNeu
+            // 
+            buttonNeu.Location = new Point(136, 200);
+            buttonNeu.Name = "buttonNeu";
+            buttonNeu.Size = new Size(75, 23);
+            buttonNeu.TabIndex = 16;
+            buttonNeu.Text = "neu..";
+            buttonNeu.UseVisualStyleBackColor = true;
+            buttonNeu.Click += buttonNeu_Click;
+            // 
             // ViewMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 513);
             Controls.Add(buttonPraefixwahl);
             Controls.Add(buttonPfadwahl);
             Controls.Add(groupBoxVorschau);
@@ -392,5 +415,7 @@
         private TextBox textBoxAntwort1;
         private TextBox textBoxFrage;
         private Button buttonBearbeiten;
+        private Button buttonNeu;
+        private Button buttonLoeschen;
     }
 }
