@@ -139,5 +139,10 @@ namespace MoodleQuizGenerator
         {
             throw new NotImplementedException();
         }
+
+        //List<Quizfrage> IModel.suchen(Quizfrage quizfrage, string praefix, bool anzahlFragenFix)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

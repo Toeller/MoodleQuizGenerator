@@ -67,7 +67,7 @@ namespace MoodleQuizGenerator
 
             //Überschreibt das setzen im Konstruktor!!!
 
-            (modelXML as ModelXML).defineInitialXElement(praefix);
+            (modelZiel as ModelXML).defineInitialXElement(praefix);
 
             foreach (Quizfrage quizfrage in quizfragen)
             {
