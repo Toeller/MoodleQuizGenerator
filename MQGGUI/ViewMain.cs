@@ -133,75 +133,13 @@ namespace MQGGUI
         {
             if (buttonBearbeiten.Text == "bearbeiten")
             {
-                buttonBearbeiten.Text = "speichern";
-
-                textBoxFrage.Text = labelFrage.Text;
-                labelFrage.Text = string.Empty;
-                textBoxFrage.Visible = true;
-                labelFrage.Visible = false;
-
-                textBoxAntwort1.Text = checkBoxAntwort1.Text;
-                checkBoxAntwort1.Text = string.Empty;
-                textBoxAntwort1.Visible = true;
-
-                textBoxAntwort2.Text = checkBoxAntwort2.Text;
-                checkBoxAntwort2.Text = string.Empty;
-                textBoxAntwort2.Visible = true;
-
-                textBoxAntwort3.Text = checkBoxAntwort3.Text;
-                checkBoxAntwort3.Text = string.Empty;
-                textBoxAntwort3.Visible = true;
-
-                textBoxAntwort4.Text = checkBoxAntwort4.Text;
-                checkBoxAntwort4.Text = string.Empty;
-                textBoxAntwort4.Visible = true;
-
-                textBoxAntwort5.Text = checkBoxAntwort5.Text;
-                checkBoxAntwort5.Text = string.Empty;
-                textBoxAntwort5.Visible = true;
-
-                buttonVor.Visible = false;
-                buttonZurueck.Visible = false;
+                bearbeitenModusEin();
 
             }
             else
             {
-
-                buttonBearbeiten.Text = "bearbeiten";
-                buttonVor.Visible = true;
-                buttonZurueck.Visible = true;
-
-                aktueleQuizfrage.Frage = textBoxFrage.Text;
-                labelFrage.Text = textBoxFrage.Text;
-                textBoxFrage.Text = string.Empty;
-                textBoxFrage.Visible = false;
-                labelFrage.Visible = true;
-
-                aktueleQuizfrage.Antworten[0] = textBoxAntwort1.Text;
-                checkBoxAntwort1.Text = textBoxAntwort1.Text;
-                textBoxAntwort1.Text = string.Empty;
-                textBoxAntwort1.Visible = false;
-
-                aktueleQuizfrage.Antworten[1] = textBoxAntwort2.Text;
-                checkBoxAntwort2.Text = textBoxAntwort2.Text;
-                textBoxAntwort2.Text = string.Empty;
-                textBoxAntwort2.Visible = false;
-
-                aktueleQuizfrage.Antworten[2] = textBoxAntwort3.Text;
-                checkBoxAntwort3.Text = textBoxAntwort3.Text;
-                textBoxAntwort3.Text = string.Empty;
-                textBoxAntwort3.Visible = false;
-
-                aktueleQuizfrage.Antworten[3] = textBoxAntwort4.Text;
-                checkBoxAntwort4.Text = textBoxAntwort4.Text;
-                textBoxAntwort4.Text = string.Empty;
-                textBoxAntwort4.Visible = false;
-
-
-                aktueleQuizfrage.Antworten[4] = textBoxAntwort5.Text;
-                checkBoxAntwort5.Text = textBoxAntwort5.Text;
-                textBoxAntwort5.Text = string.Empty;
-                textBoxAntwort5.Visible = false;
+                bearbeitenModusAus();
+                
 
                 #region countChecked
 
@@ -280,6 +218,120 @@ namespace MQGGUI
         private void buttonNeu_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bearbeitenModusEin()
+        {
+            buttonBearbeiten.Text = "speichern";
+
+           
+            labelFrage.Text = string.Empty;
+            textBoxFrage.Visible = true;
+            labelFrage.Visible = false;
+
+            checkBoxAntwort1.Text = string.Empty;
+            textBoxAntwort1.Visible = true;
+
+            checkBoxAntwort2.Text = string.Empty;
+            textBoxAntwort2.Visible = true;
+
+            checkBoxAntwort3.Text = string.Empty;
+            textBoxAntwort3.Visible = true;
+
+            checkBoxAntwort4.Text = string.Empty;
+            textBoxAntwort4.Visible = true;
+                        
+            checkBoxAntwort5.Text = string.Empty;
+            textBoxAntwort5.Visible = true;
+
+            buttonVor.Visible = false;
+            buttonZurueck.Visible = false;
+
+            fuellenTextBoxen();
+        }
+
+        private void bearbeitenFuellenQuizfrage()
+        {
+            aktueleQuizfrage.Frage = textBoxFrage.Text;
+            labelFrage.Text = textBoxFrage.Text;
+            aktueleQuizfrage.Antworten[0] = textBoxAntwort1.Text;
+            checkBoxAntwort1.Text = textBoxAntwort1.Text;
+            aktueleQuizfrage.Antworten[1] = textBoxAntwort2.Text;
+            checkBoxAntwort2.Text = textBoxAntwort2.Text;
+            aktueleQuizfrage.Antworten[2] = textBoxAntwort3.Text;
+            checkBoxAntwort3.Text = textBoxAntwort3.Text;
+            
+            aktueleQuizfrage.Antworten[3] = textBoxAntwort4.Text;
+            checkBoxAntwort4.Text = textBoxAntwort4.Text;
+            
+
+            aktueleQuizfrage.Antworten[4] = textBoxAntwort5.Text;
+            checkBoxAntwort5.Text = textBoxAntwort5.Text;
+        }
+
+        private void fuellenTextBoxen()
+        {
+            textBoxFrage.Text = labelFrage.Text;
+            
+
+            textBoxAntwort1.Text = checkBoxAntwort1.Text;
+            
+
+            textBoxAntwort2.Text = checkBoxAntwort2.Text;
+            
+
+            textBoxAntwort3.Text = checkBoxAntwort3.Text;
+            
+
+            textBoxAntwort4.Text = checkBoxAntwort4.Text;
+            
+
+            textBoxAntwort5.Text = checkBoxAntwort5.Text;
+            
+
+            
+        }
+
+
+        private void bearbeitenModusAus()
+        {
+            buttonBearbeiten.Text = "bearbeiten";
+            buttonVor.Visible = true;
+            buttonZurueck.Visible = true;
+
+            //aktueleQuizfrage.Frage = textBoxFrage.Text;
+            //labelFrage.Text = textBoxFrage.Text;
+            textBoxFrage.Text = string.Empty;
+            textBoxFrage.Visible = false;
+            labelFrage.Visible = true;
+
+            //aktueleQuizfrage.Antworten[0] = textBoxAntwort1.Text;
+            //checkBoxAntwort1.Text = textBoxAntwort1.Text;
+            textBoxAntwort1.Text = string.Empty;
+            textBoxAntwort1.Visible = false;
+
+            //aktueleQuizfrage.Antworten[1] = textBoxAntwort2.Text;
+            //checkBoxAntwort2.Text = textBoxAntwort2.Text;
+            textBoxAntwort2.Text = string.Empty;
+            textBoxAntwort2.Visible = false;
+
+            //aktueleQuizfrage.Antworten[2] = textBoxAntwort3.Text;
+            //checkBoxAntwort3.Text = textBoxAntwort3.Text;
+            textBoxAntwort3.Text = string.Empty;
+            textBoxAntwort3.Visible = false;
+
+            //aktueleQuizfrage.Antworten[3] = textBoxAntwort4.Text;
+            //checkBoxAntwort4.Text = textBoxAntwort4.Text;
+            textBoxAntwort4.Text = string.Empty;
+            textBoxAntwort4.Visible = false;
+
+
+            //aktueleQuizfrage.Antworten[4] = textBoxAntwort5.Text;
+            //checkBoxAntwort5.Text = textBoxAntwort5.Text;
+            textBoxAntwort5.Text = string.Empty;
+            textBoxAntwort5.Visible = false;
+
+            bearbeitenFuellenQuizfrage();
         }
     }
 }
