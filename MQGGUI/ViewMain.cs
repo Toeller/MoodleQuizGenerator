@@ -36,7 +36,7 @@ namespace MQGGUI
             set
             {
                 aktueleQuizfrage = value;
-                groupBoxVorschau.Text=(index+1).ToString()+"/"+this.quizfrageList.Count.ToString();
+                groupBoxVorschau.Text = (index + 1).ToString() + "/" + this.quizfrageList.Count.ToString();
                 labelFrage.Text = aktueleQuizfrage.Frage;
                 if (aktueleQuizfrage.AnzahlAntworten <= 5)
                 {
@@ -83,7 +83,7 @@ namespace MQGGUI
                         else
                             checkBoxAntwort5.Checked = false;
                     }
-                    
+
                 }
             }
 
@@ -151,11 +151,13 @@ namespace MQGGUI
         {
             if (buttonBearbeiten.Text == "bearbeiten")
             {
+                fuellenTextBoxen();
                 bearbeitenModusEin();
 
             }
             else
             {
+                bearbeitenFuellenQuizfrage();
                 bearbeitenModusAus();
 
 
@@ -211,21 +213,20 @@ namespace MQGGUI
 
 
 
-                //List<Quizfrage> quizfragen = modelQuelle.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
-                //this.quizfrageList = quizfragen;
-
                 // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-                (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split(".xml")[0] + ".xml";
+                (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
 
                 // Kategoriename gleichsetzen mit dem Praefix
-                (modelZiel as ModelXML).defineInitialXElement(textBoxPraefix.Text.Split(".xml")[0]);
-
+                (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
+                int questioncount = 0;
                 foreach (Quizfrage quizfrage in quizfrageList)
                 {
                     modelZiel.speichern(quizfrage);
+                    questioncount++;
                 }
 
-                //Index = 0;
+                Index = 0;
+                labelImportierteFragen.Text = "Gespeicherte Fragen: " + questioncount;
 
 
 
@@ -235,6 +236,98 @@ namespace MQGGUI
 
         private void buttonNeu_Click(object sender, EventArgs e)
         {
+            if (buttonNeu.Text != "speichern")
+            {
+                buttonBearbeiten.Enabled = false;
+                buttonNeu.Text = "speichern";
+                bearbeitenModusEin();
+                checkBoxAntwort1.Checked = false;
+                checkBoxAntwort2.Checked = false;
+                checkBoxAntwort3.Checked = false;
+                checkBoxAntwort4.Checked = false;
+                checkBoxAntwort5.Checked = false;
+            }
+            else
+            {
+                buttonNeu.Text = "neu..";
+                Quizfrage quizfrage = new Quizfrage();
+                quizfrage.AnzahlAntworten = 5;
+                //quizfrage.Antworten.Clear();
+                quizfrage.Fragennummer = "4711";
+                quizfrage.Frage = textBoxFrage.Text;
+                quizfrage.Antworten = new List<string>();
+                quizfrage.Antworten.Add(textBoxAntwort1.Text);
+                quizfrage.Antworten.Add(textBoxAntwort2.Text);
+                quizfrage.Antworten.Add(textBoxAntwort3.Text);
+                quizfrage.Antworten.Add(textBoxAntwort4.Text);
+                quizfrage.Antworten.Add(textBoxAntwort5.Text);
+
+
+                quizfrage.Fractions = new List<string>();
+                int rcount = 0;
+                if (checkBoxAntwort1.Checked)
+                    rcount++;
+                if (checkBoxAntwort2.Checked)
+                    rcount++;
+                if (checkBoxAntwort3.Checked)
+                    rcount++;
+                if (checkBoxAntwort4.Checked)
+                    rcount++;
+                if (checkBoxAntwort5.Checked)
+                    rcount++;
+
+                string fractionR = Convert.ToString(Math.Round(
+                    (100 / Convert.ToDouble(rcount)), 5)
+                             , new System.Globalization.CultureInfo("en-US"));
+                string fractionF = Convert.ToString(Math.Round(
+                    ((double)-100.0 / (5 - Convert.ToDouble(rcount))), 5)
+                             , new System.Globalization.CultureInfo("en-US"));
+                if (checkBoxAntwort1.Checked)
+                    quizfrage.Fractions.Add(fractionR);
+                else
+                    quizfrage.Fractions.Add(fractionF);
+
+                if (checkBoxAntwort2.Checked)
+                    quizfrage.Fractions.Add(fractionR);
+                else
+                    quizfrage.Fractions.Add(fractionF);
+
+                if (checkBoxAntwort3.Checked)
+                    quizfrage.Fractions.Add(fractionR);
+                else
+                    quizfrage.Fractions.Add(fractionF);
+
+                if (checkBoxAntwort4.Checked)
+                    quizfrage.Fractions.Add(fractionR);
+                else
+                    quizfrage.Fractions.Add(fractionF);
+
+                if (checkBoxAntwort5.Checked)
+                    quizfrage.Fractions.Add(fractionR);
+                else
+                    quizfrage.Fractions.Add(fractionF);
+
+                quizfrageList.Add(quizfrage);
+
+                // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
+                (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
+
+                // Kategoriename gleichsetzen mit dem Praefix
+                (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
+                int questioncount = 0;
+                foreach (Quizfrage qf in quizfrageList)
+                {
+                    modelZiel.speichern(qf);
+                    questioncount++;
+                }
+
+                Index = 0;
+                labelImportierteFragen.Text = "Gespeicherte Fragen: " + questioncount;
+
+                buttonBearbeiten.Enabled = true;
+                bearbeitenModusAus();
+
+            }
 
         }
 
@@ -242,7 +335,7 @@ namespace MQGGUI
         {
             buttonBearbeiten.Text = "speichern";
 
-            fuellenTextBoxen();
+
 
             labelFrage.Text = string.Empty;
             textBoxFrage.Visible = true;
@@ -314,7 +407,7 @@ namespace MQGGUI
 
         private void bearbeitenModusAus()
         {
-            bearbeitenFuellenQuizfrage();
+
 
             buttonBearbeiten.Text = "bearbeiten";
             buttonVor.Visible = true;
@@ -358,12 +451,30 @@ namespace MQGGUI
         private void buttonXMLOeffenen_Click(object sender, EventArgs e)
         {
             //List<Quizfrage> quizfragen = modelZiel.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
-            List<Quizfrage> quizfragen = modelZiel.suchen(textBoxPfad.Text+"\\"+textBoxPraefix.Text);
+            List<Quizfrage> quizfragen = modelZiel.suchen(textBoxPfad.Text + "\\" + textBoxPraefix.Text);
 
             this.quizfrageList = quizfragen;
-            
+
             Index = 0;
             labelImportierteFragen.Text = "Geöffnete Fragen: " + quizfrageList.Count;
+        }
+
+        private void buttonLoeschen_Click(object sender, EventArgs e)
+        {
+            quizfrageList.RemoveAt(index);
+            (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
+
+            // Kategoriename gleichsetzen mit dem Praefix
+            (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
+            int questioncount = 0;
+            foreach (Quizfrage qf in quizfrageList)
+            {
+                modelZiel.speichern(qf);
+                questioncount++;
+            }
+
+            Index = 0;
+            labelImportierteFragen.Text = "Fragen: " + questioncount;
         }
     }
 }

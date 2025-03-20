@@ -200,6 +200,7 @@
             buttonLoeschen.TabIndex = 15;
             buttonLoeschen.Text = "löschen";
             buttonLoeschen.UseVisualStyleBackColor = true;
+            buttonLoeschen.Click += buttonLoeschen_Click;
             // 
             // buttonBearbeiten
             // 
