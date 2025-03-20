@@ -215,10 +215,10 @@ namespace MQGGUI
                 //this.quizfrageList = quizfragen;
 
                 // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-                (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text + ".xml";
+                (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split(".xml")[0] + ".xml";
 
                 // Kategoriename gleichsetzen mit dem Praefix
-                (modelZiel as ModelXML).defineInitialXElement(textBoxPraefix.Text);
+                (modelZiel as ModelXML).defineInitialXElement(textBoxPraefix.Text.Split(".xml")[0]);
 
                 foreach (Quizfrage quizfrage in quizfrageList)
                 {
