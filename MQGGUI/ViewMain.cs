@@ -88,17 +88,19 @@ namespace MQGGUI
             List<Quizfrage> quizfragen = modelQuelle.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
             this.quizfrageList = quizfragen;
             // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-            (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text + ".xml";
+            (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text+DateTime.Now.ToString("yyMMdd")+ ".xml";
 
             // Kategoriename gleichsetzen mit dem Praefix
-            (modelZiel as ModelXML).defineInitialXElement(textBoxPraefix.Text);
-
+            (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
+            int questioncount = 0;
             foreach (Quizfrage quizfrage in quizfragen)
             {
                 modelZiel.speichern(quizfrage);
+                questioncount++;
             }
 
             Index = 0;
+            labelImportierteFragen.Text = "Importierte Fragen: " + questioncount;
         }
 
         private void buttonZurueck_Click(object sender, EventArgs e)
@@ -224,7 +226,8 @@ namespace MQGGUI
         {
             buttonBearbeiten.Text = "speichern";
 
-           
+            fuellenTextBoxen();
+
             labelFrage.Text = string.Empty;
             textBoxFrage.Visible = true;
             labelFrage.Visible = false;
@@ -247,7 +250,7 @@ namespace MQGGUI
             buttonVor.Visible = false;
             buttonZurueck.Visible = false;
 
-            fuellenTextBoxen();
+            
         }
 
         private void bearbeitenFuellenQuizfrage()
@@ -295,6 +298,8 @@ namespace MQGGUI
 
         private void bearbeitenModusAus()
         {
+            bearbeitenFuellenQuizfrage();
+
             buttonBearbeiten.Text = "bearbeiten";
             buttonVor.Visible = true;
             buttonZurueck.Visible = true;
@@ -331,7 +336,7 @@ namespace MQGGUI
             textBoxAntwort5.Text = string.Empty;
             textBoxAntwort5.Visible = false;
 
-            bearbeitenFuellenQuizfrage();
+            
         }
     }
 }

@@ -40,6 +40,8 @@
             textBoxPfad = new TextBox();
             buttonImport = new Button();
             groupBoxVorschau = new GroupBox();
+            buttonNeu = new Button();
+            buttonLoeschen = new Button();
             buttonBearbeiten = new Button();
             textBoxAntwort5 = new TextBox();
             textBoxAntwort4 = new TextBox();
@@ -57,8 +59,7 @@
             labelFrage = new Label();
             buttonPfadwahl = new Button();
             buttonPraefixwahl = new Button();
-            buttonLoeschen = new Button();
-            buttonNeu = new Button();
+            labelImportierteFragen = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAnzahlFragen).BeginInit();
             groupBoxVorschau.SuspendLayout();
             SuspendLayout();
@@ -175,14 +176,33 @@
             groupBoxVorschau.Controls.Add(labelFrage);
             groupBoxVorschau.Location = new Point(12, 228);
             groupBoxVorschau.Name = "groupBoxVorschau";
-            groupBoxVorschau.Size = new Size(504, 244);
+            groupBoxVorschau.Size = new Size(907, 348);
             groupBoxVorschau.TabIndex = 12;
             groupBoxVorschau.TabStop = false;
             groupBoxVorschau.Text = "Vorschau";
             // 
+            // buttonNeu
+            // 
+            buttonNeu.Location = new Point(356, 310);
+            buttonNeu.Name = "buttonNeu";
+            buttonNeu.Size = new Size(75, 23);
+            buttonNeu.TabIndex = 16;
+            buttonNeu.Text = "neu..";
+            buttonNeu.UseVisualStyleBackColor = true;
+            buttonNeu.Click += buttonNeu_Click;
+            // 
+            // buttonLoeschen
+            // 
+            buttonLoeschen.Location = new Point(599, 310);
+            buttonLoeschen.Name = "buttonLoeschen";
+            buttonLoeschen.Size = new Size(75, 23);
+            buttonLoeschen.TabIndex = 15;
+            buttonLoeschen.Text = "löschen";
+            buttonLoeschen.UseVisualStyleBackColor = true;
+            // 
             // buttonBearbeiten
             // 
-            buttonBearbeiten.Location = new Point(217, 200);
+            buttonBearbeiten.Location = new Point(475, 310);
             buttonBearbeiten.Name = "buttonBearbeiten";
             buttonBearbeiten.Size = new Size(75, 23);
             buttonBearbeiten.TabIndex = 14;
@@ -192,55 +212,56 @@
             // 
             // textBoxAntwort5
             // 
-            textBoxAntwort5.Location = new Point(106, 167);
+            textBoxAntwort5.Location = new Point(106, 281);
             textBoxAntwort5.Name = "textBoxAntwort5";
-            textBoxAntwort5.Size = new Size(392, 23);
+            textBoxAntwort5.Size = new Size(795, 23);
             textBoxAntwort5.TabIndex = 13;
             textBoxAntwort5.Visible = false;
             // 
             // textBoxAntwort4
             // 
-            textBoxAntwort4.Location = new Point(106, 138);
+            textBoxAntwort4.Location = new Point(106, 252);
             textBoxAntwort4.Name = "textBoxAntwort4";
-            textBoxAntwort4.Size = new Size(392, 23);
+            textBoxAntwort4.Size = new Size(795, 23);
             textBoxAntwort4.TabIndex = 12;
             textBoxAntwort4.Visible = false;
             // 
             // textBoxAntwort3
             // 
-            textBoxAntwort3.Location = new Point(106, 109);
+            textBoxAntwort3.Location = new Point(106, 223);
             textBoxAntwort3.Name = "textBoxAntwort3";
-            textBoxAntwort3.Size = new Size(392, 23);
+            textBoxAntwort3.Size = new Size(795, 23);
             textBoxAntwort3.TabIndex = 11;
             textBoxAntwort3.Visible = false;
             // 
             // textBoxAntwort2
             // 
-            textBoxAntwort2.Location = new Point(106, 80);
+            textBoxAntwort2.Location = new Point(106, 194);
             textBoxAntwort2.Name = "textBoxAntwort2";
-            textBoxAntwort2.Size = new Size(392, 23);
+            textBoxAntwort2.Size = new Size(795, 23);
             textBoxAntwort2.TabIndex = 10;
             textBoxAntwort2.Visible = false;
             // 
             // textBoxAntwort1
             // 
-            textBoxAntwort1.Location = new Point(106, 51);
+            textBoxAntwort1.Location = new Point(106, 165);
             textBoxAntwort1.Name = "textBoxAntwort1";
-            textBoxAntwort1.Size = new Size(392, 23);
+            textBoxAntwort1.Size = new Size(795, 23);
             textBoxAntwort1.TabIndex = 9;
             textBoxAntwort1.Visible = false;
             // 
             // textBoxFrage
             // 
             textBoxFrage.Location = new Point(106, 22);
+            textBoxFrage.Multiline = true;
             textBoxFrage.Name = "textBoxFrage";
-            textBoxFrage.Size = new Size(392, 23);
+            textBoxFrage.Size = new Size(795, 137);
             textBoxFrage.TabIndex = 8;
             textBoxFrage.Visible = false;
             // 
             // buttonVor
             // 
-            buttonVor.Location = new Point(423, 200);
+            buttonVor.Location = new Point(826, 310);
             buttonVor.Name = "buttonVor";
             buttonVor.Size = new Size(75, 23);
             buttonVor.TabIndex = 7;
@@ -250,7 +271,7 @@
             // 
             // buttonZurueck
             // 
-            buttonZurueck.Location = new Point(14, 200);
+            buttonZurueck.Location = new Point(106, 310);
             buttonZurueck.Name = "buttonZurueck";
             buttonZurueck.Size = new Size(75, 23);
             buttonZurueck.TabIndex = 6;
@@ -261,7 +282,7 @@
             // checkBoxAntwort5
             // 
             checkBoxAntwort5.AutoSize = true;
-            checkBoxAntwort5.Location = new Point(14, 169);
+            checkBoxAntwort5.Location = new Point(14, 283);
             checkBoxAntwort5.Name = "checkBoxAntwort5";
             checkBoxAntwort5.Size = new Size(78, 19);
             checkBoxAntwort5.TabIndex = 5;
@@ -271,7 +292,7 @@
             // checkBoxAntwort4
             // 
             checkBoxAntwort4.AutoSize = true;
-            checkBoxAntwort4.Location = new Point(14, 140);
+            checkBoxAntwort4.Location = new Point(14, 254);
             checkBoxAntwort4.Name = "checkBoxAntwort4";
             checkBoxAntwort4.Size = new Size(78, 19);
             checkBoxAntwort4.TabIndex = 4;
@@ -281,7 +302,7 @@
             // checkBoxAntwort3
             // 
             checkBoxAntwort3.AutoSize = true;
-            checkBoxAntwort3.Location = new Point(14, 111);
+            checkBoxAntwort3.Location = new Point(14, 225);
             checkBoxAntwort3.Name = "checkBoxAntwort3";
             checkBoxAntwort3.Size = new Size(78, 19);
             checkBoxAntwort3.TabIndex = 3;
@@ -291,7 +312,7 @@
             // checkBoxAntwort2
             // 
             checkBoxAntwort2.AutoSize = true;
-            checkBoxAntwort2.Location = new Point(14, 82);
+            checkBoxAntwort2.Location = new Point(14, 196);
             checkBoxAntwort2.Name = "checkBoxAntwort2";
             checkBoxAntwort2.Size = new Size(78, 19);
             checkBoxAntwort2.TabIndex = 2;
@@ -301,7 +322,7 @@
             // checkBoxAntwort1
             // 
             checkBoxAntwort1.AutoSize = true;
-            checkBoxAntwort1.Location = new Point(14, 53);
+            checkBoxAntwort1.Location = new Point(14, 167);
             checkBoxAntwort1.Name = "checkBoxAntwort1";
             checkBoxAntwort1.Size = new Size(78, 19);
             checkBoxAntwort1.TabIndex = 1;
@@ -337,30 +358,21 @@
             buttonPraefixwahl.UseVisualStyleBackColor = true;
             buttonPraefixwahl.Click += buttonPraefixwahl_Click;
             // 
-            // buttonLoeschen
+            // labelImportierteFragen
             // 
-            buttonLoeschen.Location = new Point(298, 200);
-            buttonLoeschen.Name = "buttonLoeschen";
-            buttonLoeschen.Size = new Size(75, 23);
-            buttonLoeschen.TabIndex = 15;
-            buttonLoeschen.Text = "löschen";
-            buttonLoeschen.UseVisualStyleBackColor = true;
-            // 
-            // buttonNeu
-            // 
-            buttonNeu.Location = new Point(136, 200);
-            buttonNeu.Name = "buttonNeu";
-            buttonNeu.Size = new Size(75, 23);
-            buttonNeu.TabIndex = 16;
-            buttonNeu.Text = "neu..";
-            buttonNeu.UseVisualStyleBackColor = true;
-            buttonNeu.Click += buttonNeu_Click;
+            labelImportierteFragen.AutoSize = true;
+            labelImportierteFragen.Location = new Point(138, 203);
+            labelImportierteFragen.Name = "labelImportierteFragen";
+            labelImportierteFragen.Size = new Size(117, 15);
+            labelImportierteFragen.TabIndex = 15;
+            labelImportierteFragen.Text = "Importierte Fragen: 0";
             // 
             // ViewMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 513);
+            ClientSize = new Size(931, 630);
+            Controls.Add(labelImportierteFragen);
             Controls.Add(buttonPraefixwahl);
             Controls.Add(buttonPfadwahl);
             Controls.Add(groupBoxVorschau);
@@ -417,5 +429,6 @@
         private Button buttonBearbeiten;
         private Button buttonNeu;
         private Button buttonLoeschen;
+        private Label labelImportierteFragen;
     }
 }

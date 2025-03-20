@@ -104,16 +104,9 @@ namespace MoodleQuizGenerator
 
         public ModelXML()
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //if (ofd.ShowDialog() == DialogResult.OK)
-            //{
-            //    doc = XDocument.Load(ofd.FileName);
-            //    path = ofd.FileName;
-            //}
-            //else
-            //{
-                string nameKategorie = "MQGImport"+DateTime.Now.ToString("yyMMdd");
-                defineInitialXElement(nameKategorie);
+            //Ist das Kunst oder kann das weg?
+            string nameKategorie = "MQGImport" + DateTime.Now.ToString("yyMMdd");
+            defineInitialXElement(nameKategorie);
         }
 
         public void defineInitialXElement(string nameKategorie)
