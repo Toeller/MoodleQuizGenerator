@@ -36,38 +36,54 @@ namespace MQGGUI
             set
             {
                 aktueleQuizfrage = value;
+                groupBoxVorschau.Text=(index+1).ToString()+"/"+this.quizfrageList.Count.ToString();
                 labelFrage.Text = aktueleQuizfrage.Frage;
-                if (aktueleQuizfrage.AnzahlAntworten == 5)
+                if (aktueleQuizfrage.AnzahlAntworten <= 5)
                 {
-                    checkBoxAntwort1.Text = aktueleQuizfrage.Antworten[0];
-                    if (double.Parse(aktueleQuizfrage.Fractions[0]) > 0)
-                        checkBoxAntwort1.Checked = true;
-                    else
-                        checkBoxAntwort1.Checked = false;
+                    if (aktueleQuizfrage.Antworten.Count > 0)
+                    {
+                        checkBoxAntwort1.Text = aktueleQuizfrage.Antworten[0];
+                        if (double.Parse(aktueleQuizfrage.Fractions[0]) > 0)
+                            checkBoxAntwort1.Checked = true;
+                        else
+                            checkBoxAntwort1.Checked = false;
+                    }
+                    if (aktueleQuizfrage.Antworten.Count > 1)
+                    {
+                        checkBoxAntwort2.Text = aktueleQuizfrage.Antworten[1];
+                        if (double.Parse(aktueleQuizfrage.Fractions[1]) > 0)
+                            checkBoxAntwort2.Checked = true;
+                        else
+                            checkBoxAntwort2.Checked = false;
+                    }
 
-                    checkBoxAntwort2.Text = aktueleQuizfrage.Antworten[1];
-                    if (double.Parse(aktueleQuizfrage.Fractions[1]) > 0)
-                        checkBoxAntwort2.Checked = true;
-                    else
-                        checkBoxAntwort2.Checked = false;
+                    if (aktueleQuizfrage.Antworten.Count > 2)
+                    {
+                        checkBoxAntwort3.Text = aktueleQuizfrage.Antworten[2];
+                        if (double.Parse(aktueleQuizfrage.Fractions[2]) > 0)
+                            checkBoxAntwort3.Checked = true;
+                        else
+                            checkBoxAntwort3.Checked = false;
+                    }
 
-                    checkBoxAntwort3.Text = aktueleQuizfrage.Antworten[2];
-                    if (double.Parse(aktueleQuizfrage.Fractions[2]) > 0)
-                        checkBoxAntwort3.Checked = true;
-                    else
-                        checkBoxAntwort3.Checked = false;
+                    if (aktueleQuizfrage.Antworten.Count > 3)
+                    {
+                        checkBoxAntwort4.Text = aktueleQuizfrage.Antworten[3];
+                        if (double.Parse(aktueleQuizfrage.Fractions[3]) > 0)
+                            checkBoxAntwort4.Checked = true;
+                        else
+                            checkBoxAntwort4.Checked = false;
+                    }
 
-                    checkBoxAntwort4.Text = aktueleQuizfrage.Antworten[3];
-                    if (double.Parse(aktueleQuizfrage.Fractions[3]) > 0)
-                        checkBoxAntwort4.Checked = true;
-                    else
-                        checkBoxAntwort4.Checked = false;
-
-                    checkBoxAntwort5.Text = aktueleQuizfrage.Antworten[4];
-                    if (double.Parse(aktueleQuizfrage.Fractions[4]) > 0)
-                        checkBoxAntwort5.Checked = true;
-                    else
-                        checkBoxAntwort5.Checked = false;
+                    if (aktueleQuizfrage.Antworten.Count > 4)
+                    {
+                        checkBoxAntwort5.Text = aktueleQuizfrage.Antworten[4];
+                        if (double.Parse(aktueleQuizfrage.Fractions[4]) > 0)
+                            checkBoxAntwort5.Checked = true;
+                        else
+                            checkBoxAntwort5.Checked = false;
+                    }
+                    
                 }
             }
 
@@ -341,7 +357,9 @@ namespace MQGGUI
 
         private void buttonXMLOeffenen_Click(object sender, EventArgs e)
         {
-            List<Quizfrage> quizfragen = modelZiel.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
+            //List<Quizfrage> quizfragen = modelZiel.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
+            List<Quizfrage> quizfragen = modelZiel.suchen(textBoxPfad.Text+"\\"+textBoxPraefix.Text);
+
             this.quizfrageList = quizfragen;
             
             Index = 0;

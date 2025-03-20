@@ -129,40 +129,42 @@ namespace MoodleQuizGenerator
             
             List<Quizfrage> result = new List<Quizfrage>();
 
-            Quizfrage erg = new Quizfrage();
-            
-            IEnumerable<XElement> zwischenergebnis = doc.Descendants("question").
+            Quizfrage erg;
+
+            IEnumerable<XElement> zwischenergebnis = gefunden.Descendants("question").
                                                     Where(e=> e.Attribute("type").Value=="multichoice");
             int x = 1;
             foreach (XElement el in zwischenergebnis)
             {
+                erg = new Quizfrage();
                 //private string fragennummer;
                 //private string frage;
                 //private List<string> fractions;
                 //private List<string> antworten;
                 //int anzahlAntworten;
                 erg.Fragennummer = "42";
-                erg.Frage = el.Element("questiontext").Element("text");
-                //.split <![CDATA[<p dir="ltr" style="text-align: left;">
-                //.split </p>]]>
-
+                string fstring = el.Element("questiontext").Element("text").Value;
+                fstring = fstring.Split("<p dir=\"ltr\" style=\"text-align: left;\">")[1];
+                fstring = fstring.Split("</p>")[0];
+                erg.Frage=fstring;
                 //Loop über Antworten (5! ;-) )
-                    //< answer fraction = "100" format = "html" >
-                    //  < text >< ! [CDATA[< p dir = "ltr" style = "text-align: left;" > ExecuteNonQuery() </ p >]] ></ text >
-                    //      < feedback format = "html" >
-                    //    < text />
-                    //  </ feedback >
-                    //</ answer >
-
-                erg.Vorderseite = "Hallo";
-                erg.Rueckseite = "Hello";
-                erg.Fach = x;
+                erg.Fractions = new List<string>();
+                erg.Antworten= new List<string>();
+                for (int i = 0; i < el.Elements("answer").Count(); i++)
+                {
+                    erg.Fractions.Add(el.Elements("answer").ElementAt(i).Attribute("fraction").Value);
+                    string tmpstring = el.Elements("answer").ElementAt(i).Element("text").Value;
+                    tmpstring=tmpstring.Split("<p dir = \"ltr\" style=\"text-align: left;\">")[1];
+                    tmpstring=tmpstring.Split("</p>")[0];
+                    erg.Antworten.Add(tmpstring);
+                }
+                erg.AnzahlAntworten = erg.Antworten.Count;
                 result.Add(erg);
             }
 
            
-            List<Quizfrage> ergebnis = new List<Quizfrage>();
-            ergebnis.Add(new Quizfrage("", "", new List<string>(), new List<string>()));
+            //List<Quizfrage> ergebnis = new List<Quizfrage>();
+            //ergebnis.Add(new Quizfrage("", "", new List<string>(), new List<string>()));
 
 
 
