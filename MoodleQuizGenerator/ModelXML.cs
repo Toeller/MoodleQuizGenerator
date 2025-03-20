@@ -125,7 +125,48 @@ namespace MoodleQuizGenerator
 
         List<Quizfrage> IModel.suchen(string path)
         {
-            throw new NotImplementedException();
+            XDocument gefunden = XDocument.Load(path);
+            
+            List<Quizfrage> result = new List<Quizfrage>();
+
+            Quizfrage erg = new Quizfrage();
+            
+            IEnumerable<XElement> zwischenergebnis = doc.Descendants("question").
+                                                    Where(e=> e.Attribute("type").Value=="multichoice");
+            int x = 1;
+            foreach (XElement el in zwischenergebnis)
+            {
+                //private string fragennummer;
+                //private string frage;
+                //private List<string> fractions;
+                //private List<string> antworten;
+                //int anzahlAntworten;
+                erg.Fragennummer = "42";
+                erg.Frage = el.Element("questiontext").Element("text");
+                //.split <![CDATA[<p dir="ltr" style="text-align: left;">
+                //.split </p>]]>
+
+                //Loop über Antworten (5! ;-) )
+                    //< answer fraction = "100" format = "html" >
+                    //  < text >< ! [CDATA[< p dir = "ltr" style = "text-align: left;" > ExecuteNonQuery() </ p >]] ></ text >
+                    //      < feedback format = "html" >
+                    //    < text />
+                    //  </ feedback >
+                    //</ answer >
+
+                erg.Vorderseite = "Hallo";
+                erg.Rueckseite = "Hello";
+                erg.Fach = x;
+                result.Add(erg);
+            }
+
+           
+            List<Quizfrage> ergebnis = new List<Quizfrage>();
+            ergebnis.Add(new Quizfrage("", "", new List<string>(), new List<string>()));
+
+
+
+            return result;
         }
 
         List<Quizfrage> IModel.suchen(Quizfrage quizfrage, string praefix, bool anzahlFragenFix, string path)

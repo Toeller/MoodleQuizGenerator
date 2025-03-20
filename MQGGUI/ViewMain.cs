@@ -88,7 +88,7 @@ namespace MQGGUI
             List<Quizfrage> quizfragen = modelQuelle.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
             this.quizfrageList = quizfragen;
             // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-            (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text+DateTime.Now.ToString("yyMMdd")+ ".xml";
+            (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text + DateTime.Now.ToString("yyMMdd") + ".xml";
 
             // Kategoriename gleichsetzen mit dem Praefix
             (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
@@ -141,7 +141,7 @@ namespace MQGGUI
             else
             {
                 bearbeitenModusAus();
-                
+
 
                 #region countChecked
 
@@ -243,14 +243,14 @@ namespace MQGGUI
 
             checkBoxAntwort4.Text = string.Empty;
             textBoxAntwort4.Visible = true;
-                        
+
             checkBoxAntwort5.Text = string.Empty;
             textBoxAntwort5.Visible = true;
 
             buttonVor.Visible = false;
             buttonZurueck.Visible = false;
 
-            
+
         }
 
         private void bearbeitenFuellenQuizfrage()
@@ -263,10 +263,10 @@ namespace MQGGUI
             checkBoxAntwort2.Text = textBoxAntwort2.Text;
             aktueleQuizfrage.Antworten[2] = textBoxAntwort3.Text;
             checkBoxAntwort3.Text = textBoxAntwort3.Text;
-            
+
             aktueleQuizfrage.Antworten[3] = textBoxAntwort4.Text;
             checkBoxAntwort4.Text = textBoxAntwort4.Text;
-            
+
 
             aktueleQuizfrage.Antworten[4] = textBoxAntwort5.Text;
             checkBoxAntwort5.Text = textBoxAntwort5.Text;
@@ -275,24 +275,24 @@ namespace MQGGUI
         private void fuellenTextBoxen()
         {
             textBoxFrage.Text = labelFrage.Text;
-            
+
 
             textBoxAntwort1.Text = checkBoxAntwort1.Text;
-            
+
 
             textBoxAntwort2.Text = checkBoxAntwort2.Text;
-            
+
 
             textBoxAntwort3.Text = checkBoxAntwort3.Text;
-            
+
 
             textBoxAntwort4.Text = checkBoxAntwort4.Text;
-            
+
 
             textBoxAntwort5.Text = checkBoxAntwort5.Text;
-            
 
-            
+
+
         }
 
 
@@ -336,7 +336,16 @@ namespace MQGGUI
             textBoxAntwort5.Text = string.Empty;
             textBoxAntwort5.Visible = false;
 
+
+        }
+
+        private void buttonXMLOeffenen_Click(object sender, EventArgs e)
+        {
+            List<Quizfrage> quizfragen = modelZiel.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
+            this.quizfrageList = quizfragen;
             
+            Index = 0;
+            labelImportierteFragen.Text = "Geöffnete Fragen: " + quizfrageList.Count;
         }
     }
 }

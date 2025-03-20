@@ -60,6 +60,7 @@
             buttonPfadwahl = new Button();
             buttonPraefixwahl = new Button();
             labelImportierteFragen = new Label();
+            buttonXMLOeffenen = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAnzahlFragen).BeginInit();
             groupBoxVorschau.SuspendLayout();
             SuspendLayout();
@@ -367,11 +368,22 @@
             labelImportierteFragen.TabIndex = 15;
             labelImportierteFragen.Text = "Importierte Fragen: 0";
             // 
+            // buttonXMLOeffenen
+            // 
+            buttonXMLOeffenen.Location = new Point(420, 199);
+            buttonXMLOeffenen.Name = "buttonXMLOeffenen";
+            buttonXMLOeffenen.Size = new Size(96, 23);
+            buttonXMLOeffenen.TabIndex = 16;
+            buttonXMLOeffenen.Text = "XML öffnen";
+            buttonXMLOeffenen.UseVisualStyleBackColor = true;
+            buttonXMLOeffenen.Click += buttonXMLOeffenen_Click;
+            // 
             // ViewMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(931, 630);
+            Controls.Add(buttonXMLOeffenen);
             Controls.Add(labelImportierteFragen);
             Controls.Add(buttonPraefixwahl);
             Controls.Add(buttonPfadwahl);
@@ -430,5 +442,6 @@
         private Button buttonNeu;
         private Button buttonLoeschen;
         private Label labelImportierteFragen;
+        private Button buttonXMLOeffenen;
     }
 }
