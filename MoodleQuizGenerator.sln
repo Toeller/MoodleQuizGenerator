@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQGGUI", "MQGGUI\MQGGUI.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQGMSTest", "MQGMSTest\MQGMSTest.csproj", "{4AB58529-F507-4584-87FE-8407F4C735B2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupMQGGUI", "SetupMQGGUI\SetupMQGGUI.vdproj", "{5240B9BF-46D4-639B-34A4-418A28AAC197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{4AB58529-F507-4584-87FE-8407F4C735B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AB58529-F507-4584-87FE-8407F4C735B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AB58529-F507-4584-87FE-8407F4C735B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5240B9BF-46D4-639B-34A4-418A28AAC197}.Debug|Any CPU.ActiveCfg = Debug
+		{5240B9BF-46D4-639B-34A4-418A28AAC197}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

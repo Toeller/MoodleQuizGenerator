@@ -22,6 +22,9 @@ namespace MQGGUI
             viewMain.ModelZiel = modelZiel;
            
             Application.Run((Form)viewMain);
+
+
+           
         }
     }
 }
