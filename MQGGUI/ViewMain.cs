@@ -1,4 +1,5 @@
 using MoodleQuizGenerator;
+using Squirrel;
 
 namespace MQGGUI
 {
@@ -12,6 +13,16 @@ namespace MQGGUI
         public ViewMain()
         {
             InitializeComponent();
+            CheckForUpdates();
+        }
+
+        private async Task CheckForUpdates()
+        {
+            using(var manager = new Squirrel.UpdateManager())
+            {
+
+            }
+
         }
 
         IModel IView.ModelQuelle { set => modelQuelle = value; }
