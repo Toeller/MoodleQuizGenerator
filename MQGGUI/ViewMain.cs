@@ -228,7 +228,7 @@ namespace MQGGUI
                     questioncount++;
                 }
 
-                Index = 0;
+                //Index = 0;
                 labelImportierteFragen.Text = "Gespeicherte Fragen: " + questioncount;
 
 
