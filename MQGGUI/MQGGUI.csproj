@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="squirrel.windows" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MoodleQuizGenerator\MoodleQuizGenerator.csproj" />
   </ItemGroup>
 
