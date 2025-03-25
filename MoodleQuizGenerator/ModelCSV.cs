@@ -1,6 +1,8 @@
-﻿namespace MoodleQuizGenerator
+﻿using System.Runtime.CompilerServices;
+
+namespace MoodleQuizGenerator
 {
-    internal class ModelCSV : IModel
+    public class ModelCSV : IModel
     {
         IController IModel.Controller { set => throw new NotImplementedException(); }
         IView IModel.View { set => throw new NotImplementedException(); }
@@ -15,7 +17,7 @@
             throw new NotImplementedException();
         }
 
-        List<Quizfrage> IModel.suchen(Quizfrage quizfrage, string praefix, bool anzahlFragenFix)
+        List<Quizfrage> IModel.suchen(Quizfrage quizfrage, string praefix, bool anzahlFragenFix, string path)
         {
             List<Quizfrage> ergebnis= new List<Quizfrage>();
             Quizfrage treffer;
@@ -23,7 +25,8 @@
             try
             {
                 // Set a variable to the My Documents path.
-                string docPath = ".";
+                //string docPath = ".";
+                string docPath = path;
                 //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 var files = Directory.EnumerateFiles(docPath, "*.csv", SearchOption.AllDirectories);
@@ -276,6 +279,11 @@
         }
 
         List<Quizfrage> IModel.suchen(Quizfrage quizfrage)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Quizfrage> IModel.suchen(string path)
         {
             throw new NotImplementedException();
         }

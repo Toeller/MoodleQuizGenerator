@@ -28,5 +28,7 @@
             }
             AnzahlAntworten = Antworten.Count;
         }
+
+        public Quizfrage() { }
     }
 }

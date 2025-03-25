@@ -1,31 +1,28 @@
-// Siehe:
-// https://learn.microsoft.com/de-de/visualstudio/test/walkthrough-creating-and-running-unit-tests-for-managed-code?view=vs-2019
-
-using MoodleQuizGenerator;
+﻿using MoodleQuizGenerator;
 using System.Xml.Linq;
 
-namespace TestProjectModelXML
+namespace MQGMSTest
 {
     [TestClass]
-    public class UnitTestModel
+    public sealed class Test1
     {
         [TestMethod]
         public void TestMethod1()
         {
-            // Arrange
+            //Arrange
             IModel model = new ModelXML();
 
             //String
             string defaultgrade = "1";
             string penalty = "2";
-            string nameKategorie = "HabIchMirAusgedacht";
+            string nameKategorie = "MQGImport" + DateTime.Now.ToString("yyMMdd");
 
 
             string fragenummer = "42";
             string frage = "Was ist die Antwort auf alle und so?";
             List<string> fractions = new List<string>();
-            List<string> antworten= new List<string>();
-            
+            List<string> antworten = new List<string>();
+
             fractions.Add("1");
             fractions.Add("2");
             fractions.Add("3");
@@ -38,10 +35,10 @@ namespace TestProjectModelXML
             antworten.Add("Antworttext 4");
             antworten.Add("Antworttext 5");
 
-            Quizfrage quizfrage = new Quizfrage(fragenummer,frage,fractions,antworten);
+            Quizfrage quizfrage = new Quizfrage(fragenummer, frage, fractions, antworten);
 
-            
-            XDocument expected= new XDocument(new XElement("quiz",
+
+            XDocument expected = new XDocument(new XElement("quiz",
                 new XComment("question: 0"),
                 new XElement("question",
                     new XAttribute("type", "category"),
@@ -49,7 +46,7 @@ namespace TestProjectModelXML
                         new XElement("text", "$course$/top/" + nameKategorie)),
                     new XElement("info",
                         new XAttribute("format", "moodle_auto_format"),
-                        new XElement("text", "Standardkategorie f�r Fragen, die im Kontext 'Ausdenken' freigegeben sind.")),
+                        new XElement("text", "Standardkategorie für Fragen, die im Kontext 'Ausdenken' freigegeben sind.")),
                     new XElement("idnumber"))));
 
             XComment com = new XComment("question: " + quizfrage.Fragennummer);
@@ -110,8 +107,7 @@ namespace TestProjectModelXML
 
             // Assert
             XDocument actual = XDocument.Load("dasIsteinTest.xml");
-            Assert.AreEqual(expected.ToString(), actual.ToString(),"XML was not created correctly");
-
+            Assert.AreEqual(expected.ToString(), actual.ToString(), "XML was not created correctly");
 
         }
     }

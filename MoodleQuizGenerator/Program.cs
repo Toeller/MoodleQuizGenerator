@@ -5,17 +5,17 @@ namespace MoodleQuizGenerator
 {
     internal class Program
     {
-        private static IModel modelXML = new ModelXML();
-        private static IModel modelCSV = new ModelCSV();
+        private static IModel modelZiel = new ModelXML();
+        private static IModel modelQuelle = new ModelCSV();
         private static IView view = new View();
         private static IController controller = new Controller();
         static void Main(string[] args)
         {
-            modelXML.View = view;
-            modelXML.Controller = controller;
-            view.Model = modelXML;
+            modelZiel.View = view;
+            modelZiel.Controller = controller;
+            view.ModelZiel = modelZiel;
             view.Controller = controller;
-            controller.Model = modelXML;
+            controller.Model = modelZiel;
             controller.View = view;
 
             string praefix = "Aufgabe";
@@ -48,27 +48,30 @@ namespace MoodleQuizGenerator
             if (kommandozeilenargumente.IstArgumentVorhanden("-y"))
             {
                 string penalty = kommandozeilenargumente.HoleArgument("-y");
-                (modelXML as ModelXML).Penalty = penalty;
+                (modelZiel as ModelXML).Penalty = penalty;
             }
 
             if (kommandozeilenargumente.IstArgumentVorhanden("-g"))
             {
                 string defaultgrade = kommandozeilenargumente.HoleArgument("-g");
-                (modelXML as ModelXML).Defaultgrade = defaultgrade;
+                (modelZiel as ModelXML).Defaultgrade = defaultgrade;
             }
 
 
-            List<Quizfrage> quizfragen = modelCSV.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), praefix, anzahlFragenFix);
+            List<Quizfrage> quizfragen = modelQuelle.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), praefix, anzahlFragenFix);
 
             // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-            (modelXML as ModelXML).Path = praefix + ".xml";
+            (modelZiel as ModelXML).Path = praefix + ".xml";
 
             // Kategoriename gleichsetzen mit dem Praefix
-            (modelXML as ModelXML).defineInitialXElement(praefix);
+
+            //Überschreibt das setzen im Konstruktor!!!
+
+            (modelZiel as ModelXML).defineInitialXElement(praefix);
 
             foreach (Quizfrage quizfrage in quizfragen)
             {
-                modelXML.speichern(quizfrage);
+                modelZiel.speichern(quizfrage);
             }
              
             Console.WriteLine("Ende!");

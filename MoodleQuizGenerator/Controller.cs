@@ -1,6 +1,6 @@
 ﻿namespace MoodleQuizGenerator
 {
-    internal class Controller : IController
+    public class Controller : IController
     {
         private IModel model;
         private IView view;
