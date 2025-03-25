@@ -52,6 +52,7 @@
             textBoxFach = new TextBox();
             comboBoxUnterrichtsfach = new ComboBox();
             comboBoxThema = new ComboBox();
+            buttonRueckseiteZeigen = new Button();
             groupBoxModus.SuspendLayout();
             SuspendLayout();
             // 
@@ -278,27 +279,39 @@
             // 
             // comboBoxUnterrichtsfach
             // 
-            comboBoxUnterrichtsfach.Enabled = false;
             comboBoxUnterrichtsfach.FormattingEnabled = true;
             comboBoxUnterrichtsfach.Location = new Point(129, 12);
             comboBoxUnterrichtsfach.Name = "comboBoxUnterrichtsfach";
             comboBoxUnterrichtsfach.Size = new Size(444, 23);
             comboBoxUnterrichtsfach.TabIndex = 21;
+            comboBoxUnterrichtsfach.SelectedIndexChanged += comboBoxUnterrichtsfach_SelectedIndexChanged;
             // 
             // comboBoxThema
             // 
-            comboBoxThema.Enabled = false;
             comboBoxThema.FormattingEnabled = true;
             comboBoxThema.Location = new Point(129, 41);
             comboBoxThema.Name = "comboBoxThema";
             comboBoxThema.Size = new Size(444, 23);
             comboBoxThema.TabIndex = 22;
+            comboBoxThema.SelectedIndexChanged += comboBoxThema_SelectedIndexChanged;
+            // 
+            // buttonRueckseiteZeigen
+            // 
+            buttonRueckseiteZeigen.Location = new Point(13, 403);
+            buttonRueckseiteZeigen.Name = "buttonRueckseiteZeigen";
+            buttonRueckseiteZeigen.Size = new Size(279, 23);
+            buttonRueckseiteZeigen.TabIndex = 23;
+            buttonRueckseiteZeigen.Text = "Rückseite zeigen";
+            buttonRueckseiteZeigen.UseVisualStyleBackColor = true;
+            buttonRueckseiteZeigen.Visible = false;
+            buttonRueckseiteZeigen.Click += buttonRueckseiteZeigen_Click;
             // 
             // View
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(591, 501);
+            Controls.Add(buttonRueckseiteZeigen);
             Controls.Add(comboBoxThema);
             Controls.Add(comboBoxUnterrichtsfach);
             Controls.Add(textBoxFach);
@@ -355,5 +368,6 @@
         private TextBox textBoxFach;
         private ComboBox comboBoxUnterrichtsfach;
         private ComboBox comboBoxThema;
+        private Button buttonRueckseiteZeigen;
     }
 }
