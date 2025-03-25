@@ -46,13 +46,19 @@
             buttonFalsch = new Button();
             buttonRichtig = new Button();
             buttonNeu = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            textBoxFach = new TextBox();
+            comboBoxUnterrichtsfach = new ComboBox();
+            comboBoxThema = new ComboBox();
             groupBoxModus.SuspendLayout();
             SuspendLayout();
             // 
             // textBoxVorderseite
             // 
             textBoxVorderseite.Enabled = false;
-            textBoxVorderseite.Location = new Point(12, 27);
+            textBoxVorderseite.Location = new Point(12, 152);
             textBoxVorderseite.Multiline = true;
             textBoxVorderseite.Name = "textBoxVorderseite";
             textBoxVorderseite.Size = new Size(280, 181);
@@ -61,7 +67,7 @@
             // textBoxRueckseite
             // 
             textBoxRueckseite.Enabled = false;
-            textBoxRueckseite.Location = new Point(298, 27);
+            textBoxRueckseite.Location = new Point(298, 152);
             textBoxRueckseite.Multiline = true;
             textBoxRueckseite.Name = "textBoxRueckseite";
             textBoxRueckseite.Size = new Size(280, 181);
@@ -70,7 +76,7 @@
             // labelVorderseite
             // 
             labelVorderseite.AutoSize = true;
-            labelVorderseite.Location = new Point(12, 9);
+            labelVorderseite.Location = new Point(12, 134);
             labelVorderseite.Name = "labelVorderseite";
             labelVorderseite.Size = new Size(65, 15);
             labelVorderseite.TabIndex = 2;
@@ -79,7 +85,7 @@
             // labelRueckseite
             // 
             labelRueckseite.AutoSize = true;
-            labelRueckseite.Location = new Point(298, 9);
+            labelRueckseite.Location = new Point(298, 134);
             labelRueckseite.Name = "labelRueckseite";
             labelRueckseite.Size = new Size(57, 15);
             labelRueckseite.TabIndex = 3;
@@ -90,7 +96,7 @@
             groupBoxModus.Controls.Add(radioButtonLesen);
             groupBoxModus.Controls.Add(radioButtonLernen);
             groupBoxModus.Controls.Add(radioButtonEditieren);
-            groupBoxModus.Location = new Point(13, 307);
+            groupBoxModus.Location = new Point(13, 432);
             groupBoxModus.Name = "groupBoxModus";
             groupBoxModus.Size = new Size(566, 55);
             groupBoxModus.TabIndex = 4;
@@ -135,7 +141,7 @@
             // 
             // buttonSpeichern
             // 
-            buttonSpeichern.Location = new Point(12, 214);
+            buttonSpeichern.Location = new Point(12, 339);
             buttonSpeichern.Name = "buttonSpeichern";
             buttonSpeichern.Size = new Size(192, 23);
             buttonSpeichern.TabIndex = 5;
@@ -145,7 +151,7 @@
             // 
             // buttonLoeschen
             // 
-            buttonLoeschen.Location = new Point(386, 214);
+            buttonLoeschen.Location = new Point(386, 339);
             buttonLoeschen.Name = "buttonLoeschen";
             buttonLoeschen.Size = new Size(192, 23);
             buttonLoeschen.TabIndex = 6;
@@ -155,7 +161,7 @@
             // 
             // buttonSuchen
             // 
-            buttonSuchen.Location = new Point(210, 214);
+            buttonSuchen.Location = new Point(210, 339);
             buttonSuchen.Name = "buttonSuchen";
             buttonSuchen.Size = new Size(170, 23);
             buttonSuchen.TabIndex = 7;
@@ -165,7 +171,7 @@
             // 
             // buttonAnfang
             // 
-            buttonAnfang.Location = new Point(12, 243);
+            buttonAnfang.Location = new Point(12, 368);
             buttonAnfang.Name = "buttonAnfang";
             buttonAnfang.Size = new Size(75, 23);
             buttonAnfang.TabIndex = 8;
@@ -175,7 +181,7 @@
             // 
             // buttonZurueck
             // 
-            buttonZurueck.Location = new Point(129, 243);
+            buttonZurueck.Location = new Point(129, 368);
             buttonZurueck.Name = "buttonZurueck";
             buttonZurueck.Size = new Size(75, 23);
             buttonZurueck.TabIndex = 9;
@@ -185,7 +191,7 @@
             // 
             // buttonVor
             // 
-            buttonVor.Location = new Point(386, 243);
+            buttonVor.Location = new Point(386, 368);
             buttonVor.Name = "buttonVor";
             buttonVor.Size = new Size(75, 23);
             buttonVor.TabIndex = 10;
@@ -195,7 +201,7 @@
             // 
             // buttonEnde
             // 
-            buttonEnde.Location = new Point(503, 243);
+            buttonEnde.Location = new Point(503, 368);
             buttonEnde.Name = "buttonEnde";
             buttonEnde.Size = new Size(75, 23);
             buttonEnde.TabIndex = 11;
@@ -206,7 +212,7 @@
             // buttonFalsch
             // 
             buttonFalsch.BackColor = Color.Red;
-            buttonFalsch.Location = new Point(298, 278);
+            buttonFalsch.Location = new Point(298, 403);
             buttonFalsch.Name = "buttonFalsch";
             buttonFalsch.Size = new Size(139, 23);
             buttonFalsch.TabIndex = 12;
@@ -217,7 +223,7 @@
             // buttonRichtig
             // 
             buttonRichtig.BackColor = Color.FromArgb(128, 255, 128);
-            buttonRichtig.Location = new Point(443, 278);
+            buttonRichtig.Location = new Point(443, 403);
             buttonRichtig.Name = "buttonRichtig";
             buttonRichtig.Size = new Size(135, 23);
             buttonRichtig.TabIndex = 13;
@@ -227,7 +233,7 @@
             // 
             // buttonNeu
             // 
-            buttonNeu.Location = new Point(210, 243);
+            buttonNeu.Location = new Point(210, 368);
             buttonNeu.Name = "buttonNeu";
             buttonNeu.Size = new Size(170, 23);
             buttonNeu.TabIndex = 14;
@@ -235,11 +241,70 @@
             buttonNeu.UseVisualStyleBackColor = true;
             buttonNeu.Click += buttonNeu_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 15);
+            label1.TabIndex = 15;
+            label1.Text = "Unterrichtsfach";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 44);
+            label2.Name = "label2";
+            label2.Size = new Size(43, 15);
+            label2.TabIndex = 16;
+            label2.Text = "Thema";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 73);
+            label3.Name = "label3";
+            label3.Size = new Size(86, 15);
+            label3.TabIndex = 17;
+            label3.Text = "Fach/Lernstufe";
+            // 
+            // textBoxFach
+            // 
+            textBoxFach.Enabled = false;
+            textBoxFach.Location = new Point(129, 70);
+            textBoxFach.Name = "textBoxFach";
+            textBoxFach.Size = new Size(444, 23);
+            textBoxFach.TabIndex = 20;
+            // 
+            // comboBoxUnterrichtsfach
+            // 
+            comboBoxUnterrichtsfach.Enabled = false;
+            comboBoxUnterrichtsfach.FormattingEnabled = true;
+            comboBoxUnterrichtsfach.Location = new Point(129, 12);
+            comboBoxUnterrichtsfach.Name = "comboBoxUnterrichtsfach";
+            comboBoxUnterrichtsfach.Size = new Size(444, 23);
+            comboBoxUnterrichtsfach.TabIndex = 21;
+            // 
+            // comboBoxThema
+            // 
+            comboBoxThema.Enabled = false;
+            comboBoxThema.FormattingEnabled = true;
+            comboBoxThema.Location = new Point(129, 41);
+            comboBoxThema.Name = "comboBoxThema";
+            comboBoxThema.Size = new Size(444, 23);
+            comboBoxThema.TabIndex = 22;
+            // 
             // View
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(591, 377);
+            ClientSize = new Size(591, 501);
+            Controls.Add(comboBoxThema);
+            Controls.Add(comboBoxUnterrichtsfach);
+            Controls.Add(textBoxFach);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(buttonNeu);
             Controls.Add(buttonRichtig);
             Controls.Add(buttonFalsch);
@@ -284,5 +349,11 @@
         private Button buttonFalsch;
         private Button buttonRichtig;
         private Button buttonNeu;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private TextBox textBoxFach;
+        private ComboBox comboBoxUnterrichtsfach;
+        private ComboBox comboBoxThema;
     }
 }

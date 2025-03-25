@@ -38,6 +38,9 @@ namespace Lernmaschine
                 karteikarte = value;
                 textBoxVorderseite.Text = karteikarte.Vorderseite;
                 textBoxRueckseite.Text = karteikarte.Rueckseite;
+                comboBoxUnterrichtsfach.Text=karteikarte.Unterrichtsfach;
+                comboBoxThema.Text=karteikarte.Thema;
+                textBoxFach.Text=karteikarte.Fach;
             }
         }
 
@@ -63,6 +66,9 @@ namespace Lernmaschine
             {
                 textBoxVorderseite.Enabled = true;
                 textBoxRueckseite.Enabled = true;
+                comboBoxUnterrichtsfach.Enabled = true;
+                comboBoxThema.Enabled = true;
+                textBoxFach.Enabled = true; 
                 buttonSpeichern.Text = "speichern";
                 buttonNeu.Text = "abbrechen";
             }
@@ -70,16 +76,23 @@ namespace Lernmaschine
             {
                 Karteikarte.Vorderseite = textBoxVorderseite.Text;
                 Karteikarte.Rueckseite = textBoxRueckseite.Text;
+                Karteikarte.Unterrichtsfach = comboBoxUnterrichtsfach.Text;
+                Karteikarte.Thema = comboBoxThema.Text;
+                Karteikarte.Fach=textBoxFach.Text;
 
                 if (buttonSpeichern.Text == "speichern")
                     controller.einfuegen(Karteikarte);
                 else if (buttonSpeichern.Text == "neuanlegen")
                 {
                     Karteikarte.Karteikartennummer = -1;
+                    Karteikarte.Fach = "1";
                     controller.einfuegen(Karteikarte);
                 }
                 textBoxVorderseite.Enabled = false;
                 textBoxRueckseite.Enabled = false;
+                comboBoxUnterrichtsfach.Enabled = false;
+                comboBoxThema.Enabled = false;
+                textBoxFach.Enabled = false;
                 buttonSpeichern.Text = "ändern";
                 buttonNeu.Text = "neu";
 
@@ -212,8 +225,17 @@ namespace Lernmaschine
             {
                 textBoxVorderseite.Text = string.Empty;
                 textBoxRueckseite.Text = string.Empty;
+                comboBoxUnterrichtsfach.Text=string.Empty;
+                comboBoxThema.Text = string.Empty;
+                comboBoxUnterrichtsfachFuellen();
+                comboBoxThemaFuellen();
+                textBoxFach.Text = string.Empty;
+
                 textBoxVorderseite.Enabled = true;
                 textBoxRueckseite.Enabled=true;
+                comboBoxUnterrichtsfach.Enabled = true;
+                comboBoxThema.Enabled = true;
+                textBoxFach.Enabled = true;
                 buttonNeu.Text = "abbrechen";
                 buttonSpeichern.Text = "neuanlegen";
             }
@@ -222,9 +244,51 @@ namespace Lernmaschine
                 buttonNeu.Text = "neu";
                 textBoxVorderseite.Enabled = false;
                 textBoxRueckseite.Enabled = false;
-                if(buttonSpeichern.Text== "neuanlegen")
+                comboBoxUnterrichtsfach.Enabled = false;
+                comboBoxThema.Enabled = false;
+                textBoxFach.Enabled = false;
+                if (buttonSpeichern.Text== "neuanlegen")
                     Index = Index;
                 buttonSpeichern.Text = "ändern";
+            }
+        }
+
+        private void comboBoxThemaFuellen()
+        {
+            
+            foreach(Karteikarte k in Karteikarten)
+            {
+                bool themaGefunden = false;
+                foreach (string s in comboBoxThema.Items)
+                {
+                    if(s==k.Thema)
+                    {
+                        themaGefunden = true;
+                    }
+                }
+                if(!themaGefunden)
+                {
+                    comboBoxThema.Items.Add(k.Thema);
+                }
+            }
+        }
+
+        private void comboBoxUnterrichtsfachFuellen()
+        {
+            foreach (Karteikarte k in Karteikarten)
+            {
+                bool unterrichtsfachGefunden = false;
+                foreach (string s in comboBoxUnterrichtsfach.Items)
+                {
+                    if (s == k.Unterrichtsfach)
+                    {
+                        unterrichtsfachGefunden = true;
+                    }
+                }
+                if (!unterrichtsfachGefunden)
+                {
+                    comboBoxUnterrichtsfach.Items.Add(k.Unterrichtsfach);
+                }
             }
         }
 

@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 
 namespace Lernmaschine
 {
-    internal class Model : IModel
+    internal class ModelSQL : IModel
     {
         private static string myConnectionString = "server=127.0.0.1;uid=lernmaschine;pwd=lernenHHBK;database=lernmaschine;";
         private static MySqlConnection conn=new MySqlConnection(myConnectionString);
@@ -20,7 +20,7 @@ namespace Lernmaschine
         }
         IController IModel.Controller { set => controller=value; }
 
-        public Model()
+        public ModelSQL()
         {
             createDB();
             createTestData();
