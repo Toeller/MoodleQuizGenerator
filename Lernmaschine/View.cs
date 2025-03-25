@@ -112,6 +112,9 @@ namespace Lernmaschine
         private void buttonLoeschen_Click(object sender, EventArgs e)
         {
             controller.loeschen(Karteikarte);
+            comboBoxUnterrichtsfach_SelectedIndexChanged(this,new EventArgs());
+            //comboBoxThema_SelectedIndexChanged(this,new EventArgs());
+
         }
 
         private void buttonAnfang_Click(object sender, EventArgs e)
