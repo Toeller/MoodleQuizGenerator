@@ -10,12 +10,14 @@ namespace MQGGUI
         private List<Quizfrage> quizfrageList;
         private Quizfrage aktueleQuizfrage;
         private int index;
+        private ViewImport viewImportDialog;
         public ViewMain()
         {
             InitializeComponent();
+            viewImportDialog = new ViewImport();
         }
 
-       
+
 
         IModel IView.ModelQuelle { set => modelQuelle = value; }
         IController IView.Controller { set => throw new NotImplementedException(); }
@@ -104,22 +106,28 @@ namespace MQGGUI
 
         private void buttonImport_Click(object sender, EventArgs e)
         {
-            List<Quizfrage> quizfragen = modelQuelle.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
-            this.quizfrageList = quizfragen;
-            // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-            (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text + DateTime.Now.ToString("yyMMdd") + ".xml";
-
-            // Kategoriename gleichsetzen mit dem Praefix
-            (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
-            int questioncount = 0;
-            foreach (Quizfrage quizfrage in quizfragen)
+            if (viewImportDialog.ShowDialog(this) == DialogResult.OK)
             {
-                modelZiel.speichern(quizfrage);
-                questioncount++;
-            }
+                textBoxPraefix.Text = viewImportDialog.textBoxPraefix.Text;
+                textBoxArbeitspfad.Text = viewImportDialog.textBoxPfad.Text;
 
-            Index = 0;
-            labelImportierteFragen.Text = "Importierte Fragen: " + questioncount;
+                List<Quizfrage> quizfragen = modelQuelle.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxArbeitspfad.Text);
+                this.quizfrageList = quizfragen;
+                // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
+                (modelZiel as ModelXML).Path = textBoxArbeitspfad.Text + "\\" + textBoxPraefix.Text + DateTime.Now.ToString("yyMMdd") + ".xml";
+
+                // Kategoriename gleichsetzen mit dem Praefix
+                (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
+                int questioncount = 0;
+                foreach (Quizfrage quizfrage in quizfragen)
+                {
+                    modelZiel.speichern(quizfrage);
+                    questioncount++;
+                }
+
+                Index = 0;
+                labelImportierteFragen.Text = "Importierte Fragen: " + questioncount;
+            }
         }
 
         private void buttonZurueck_Click(object sender, EventArgs e)
@@ -130,24 +138,6 @@ namespace MQGGUI
         private void buttonVor_Click(object sender, EventArgs e)
         {
             Index++;
-        }
-
-        private void buttonPfadwahl_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                textBoxPfad.Text = fbd.SelectedPath;
-            }
-        }
-
-        private void buttonPraefixwahl_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                textBoxPraefix.Text = ofd.FileName.Split('\\').Last();
-            }
         }
 
         private void buttonBearbeiten_Click(object sender, EventArgs e)
@@ -216,8 +206,8 @@ namespace MQGGUI
 
 
 
-                // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-                (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
+                //Dateiname der XML - Datei - Ausgabe mit klarem Bezug versehen
+               (modelZiel as ModelXML).Path = textBoxArbeitspfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
 
                 // Kategoriename gleichsetzen mit dem Praefix
                 (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
@@ -313,7 +303,7 @@ namespace MQGGUI
                 quizfrageList.Add(quizfrage);
 
                 // Dateiname der XML-Datei-Ausgabe mit klarem Bezug versehen
-                (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
+                (modelZiel as ModelXML).Path = textBoxArbeitspfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
 
                 // Kategoriename gleichsetzen mit dem Praefix
                 (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));
@@ -453,19 +443,26 @@ namespace MQGGUI
 
         private void buttonXMLOeffenen_Click(object sender, EventArgs e)
         {
-            //List<Quizfrage> quizfragen = modelZiel.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxPfad.Text);
-            List<Quizfrage> quizfragen = modelZiel.suchen(textBoxPfad.Text + "\\" + textBoxPraefix.Text);
+            //List<Quizfrage> quizfragen = modelZiel.suchen(new Quizfrage("", "", new List<string>(), new List<string>()), textBoxPraefix.Text, (numericUpDownAnzahlFragen.Value != 5), textBoxArbeitspfad.Text);
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                List<Quizfrage> quizfragen = modelZiel.suchen(ofd.FileName);
+                string[] fileNameSplitted = ofd.FileName.Split("\\");
+                textBoxArbeitspfad.Text = String.Join("\\", fileNameSplitted.Take(fileNameSplitted.Count() - 1).ToArray());
+                textBoxPraefix.Text = fileNameSplitted.Last();
 
-            this.quizfrageList = quizfragen;
+                this.quizfrageList = quizfragen;
 
-            Index = 0;
-            labelImportierteFragen.Text = "Geöffnete Fragen: " + quizfrageList.Count;
+                Index = 0;
+                labelImportierteFragen.Text = "Geöffnete Fragen: " + quizfrageList.Count;
+            }
         }
 
         private void buttonLoeschen_Click(object sender, EventArgs e)
         {
             quizfrageList.RemoveAt(index);
-            (modelZiel as ModelXML).Path = textBoxPfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
+            (modelZiel as ModelXML).Path = textBoxArbeitspfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
 
             // Kategoriename gleichsetzen mit dem Praefix
             (modelZiel as ModelXML).defineInitialXElement("MQGImport" + DateTime.Now.ToString("yyMMdd"));

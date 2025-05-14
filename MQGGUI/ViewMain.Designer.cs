@@ -28,16 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            textBoxPraefix = new TextBox();
             label2 = new Label();
             numericUpDownAnzahlFragen = new NumericUpDown();
             label3 = new Label();
             label4 = new Label();
             textBoxPenalty = new TextBox();
             textBoxDefaultgrade = new TextBox();
-            label5 = new Label();
-            textBoxPfad = new TextBox();
             buttonImport = new Button();
             groupBoxVorschau = new GroupBox();
             buttonNeu = new Button();
@@ -57,34 +53,20 @@
             checkBoxAntwort2 = new CheckBox();
             checkBoxAntwort1 = new CheckBox();
             labelFrage = new Label();
-            buttonPfadwahl = new Button();
-            buttonPraefixwahl = new Button();
             labelImportierteFragen = new Label();
             buttonXMLOeffenen = new Button();
+            label1 = new Label();
+            label5 = new Label();
+            textBoxArbeitspfad = new TextBox();
+            textBoxPraefix = new TextBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAnzahlFragen).BeginInit();
             groupBoxVorschau.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 76);
-            label1.Name = "label1";
-            label1.Size = new Size(37, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Präfix";
-            // 
-            // textBoxPraefix
-            // 
-            textBoxPraefix.Location = new Point(12, 94);
-            textBoxPraefix.Name = "textBoxPraefix";
-            textBoxPraefix.Size = new Size(292, 23);
-            textBoxPraefix.TabIndex = 1;
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 141);
+            label2.Location = new Point(12, 164);
             label2.Name = "label2";
             label2.Size = new Size(82, 15);
             label2.TabIndex = 2;
@@ -92,7 +74,7 @@
             // 
             // numericUpDownAnzahlFragen
             // 
-            numericUpDownAnzahlFragen.Location = new Point(12, 159);
+            numericUpDownAnzahlFragen.Location = new Point(12, 182);
             numericUpDownAnzahlFragen.Name = "numericUpDownAnzahlFragen";
             numericUpDownAnzahlFragen.Size = new Size(120, 23);
             numericUpDownAnzahlFragen.TabIndex = 4;
@@ -101,7 +83,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(138, 141);
+            label3.Location = new Point(138, 164);
             label3.Name = "label3";
             label3.Size = new Size(46, 15);
             label3.TabIndex = 5;
@@ -110,7 +92,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(244, 141);
+            label4.Location = new Point(244, 164);
             label4.Name = "label4";
             label4.Size = new Size(74, 15);
             label4.TabIndex = 6;
@@ -118,39 +100,24 @@
             // 
             // textBoxPenalty
             // 
-            textBoxPenalty.Location = new Point(138, 159);
+            textBoxPenalty.Location = new Point(138, 182);
             textBoxPenalty.Name = "textBoxPenalty";
             textBoxPenalty.Size = new Size(100, 23);
             textBoxPenalty.TabIndex = 7;
             // 
             // textBoxDefaultgrade
             // 
-            textBoxDefaultgrade.Location = new Point(244, 158);
+            textBoxDefaultgrade.Location = new Point(244, 181);
             textBoxDefaultgrade.Name = "textBoxDefaultgrade";
             textBoxDefaultgrade.Size = new Size(100, 23);
             textBoxDefaultgrade.TabIndex = 8;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(12, 9);
-            label5.Name = "label5";
-            label5.Size = new Size(31, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Pfad";
-            // 
-            // textBoxPfad
-            // 
-            textBoxPfad.Location = new Point(12, 27);
-            textBoxPfad.Name = "textBoxPfad";
-            textBoxPfad.Size = new Size(469, 23);
-            textBoxPfad.TabIndex = 10;
-            // 
             // buttonImport
             // 
-            buttonImport.Location = new Point(12, 199);
+            buttonImport.Font = new Font("Segoe UI", 14F);
+            buttonImport.Location = new Point(12, 12);
             buttonImport.Name = "buttonImport";
-            buttonImport.Size = new Size(100, 23);
+            buttonImport.Size = new Size(126, 40);
             buttonImport.TabIndex = 11;
             buttonImport.Text = "importieren";
             buttonImport.UseVisualStyleBackColor = true;
@@ -175,7 +142,7 @@
             groupBoxVorschau.Controls.Add(checkBoxAntwort2);
             groupBoxVorschau.Controls.Add(checkBoxAntwort1);
             groupBoxVorschau.Controls.Add(labelFrage);
-            groupBoxVorschau.Location = new Point(12, 228);
+            groupBoxVorschau.Location = new Point(12, 251);
             groupBoxVorschau.Name = "groupBoxVorschau";
             groupBoxVorschau.Size = new Size(907, 348);
             groupBoxVorschau.TabIndex = 12;
@@ -340,30 +307,10 @@
             labelFrage.TabIndex = 0;
             labelFrage.Text = "Frage";
             // 
-            // buttonPfadwahl
-            // 
-            buttonPfadwahl.Location = new Point(487, 26);
-            buttonPfadwahl.Name = "buttonPfadwahl";
-            buttonPfadwahl.Size = new Size(29, 23);
-            buttonPfadwahl.TabIndex = 13;
-            buttonPfadwahl.Text = "...";
-            buttonPfadwahl.UseVisualStyleBackColor = true;
-            buttonPfadwahl.Click += buttonPfadwahl_Click;
-            // 
-            // buttonPraefixwahl
-            // 
-            buttonPraefixwahl.Location = new Point(315, 94);
-            buttonPraefixwahl.Name = "buttonPraefixwahl";
-            buttonPraefixwahl.Size = new Size(29, 23);
-            buttonPraefixwahl.TabIndex = 14;
-            buttonPraefixwahl.Text = "...";
-            buttonPraefixwahl.UseVisualStyleBackColor = true;
-            buttonPraefixwahl.Click += buttonPraefixwahl_Click;
-            // 
             // labelImportierteFragen
             // 
             labelImportierteFragen.AutoSize = true;
-            labelImportierteFragen.Location = new Point(138, 203);
+            labelImportierteFragen.Location = new Point(138, 226);
             labelImportierteFragen.Name = "labelImportierteFragen";
             labelImportierteFragen.Size = new Size(117, 15);
             labelImportierteFragen.TabIndex = 15;
@@ -371,35 +318,70 @@
             // 
             // buttonXMLOeffenen
             // 
-            buttonXMLOeffenen.Location = new Point(420, 199);
+            buttonXMLOeffenen.Font = new Font("Segoe UI", 12F);
+            buttonXMLOeffenen.Location = new Point(144, 12);
             buttonXMLOeffenen.Name = "buttonXMLOeffenen";
-            buttonXMLOeffenen.Size = new Size(96, 23);
+            buttonXMLOeffenen.Size = new Size(150, 40);
             buttonXMLOeffenen.TabIndex = 16;
-            buttonXMLOeffenen.Text = "XML öffnen";
+            buttonXMLOeffenen.Text = "importieren: XML";
             buttonXMLOeffenen.UseVisualStyleBackColor = true;
             buttonXMLOeffenen.Click += buttonXMLOeffenen_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(11, 68);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 19);
+            label1.TabIndex = 17;
+            label1.Text = "Arbeitspfad:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F);
+            label5.Location = new Point(11, 102);
+            label5.Name = "label5";
+            label5.Size = new Size(93, 19);
+            label5.TabIndex = 18;
+            label5.Text = "Output Datei:";
+            // 
+            // textBoxArbeitspfad
+            // 
+            textBoxArbeitspfad.Font = new Font("Segoe UI", 10F);
+            textBoxArbeitspfad.Location = new Point(110, 68);
+            textBoxArbeitspfad.Name = "textBoxArbeitspfad";
+            textBoxArbeitspfad.Size = new Size(452, 25);
+            textBoxArbeitspfad.TabIndex = 19;
+            // 
+            // textBoxPraefix
+            // 
+            textBoxPraefix.Font = new Font("Segoe UI", 10F);
+            textBoxPraefix.Location = new Point(110, 102);
+            textBoxPraefix.Name = "textBoxPraefix";
+            textBoxPraefix.Size = new Size(452, 25);
+            textBoxPraefix.TabIndex = 20;
             // 
             // ViewMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(931, 630);
+            ClientSize = new Size(931, 611);
+            Controls.Add(textBoxPraefix);
+            Controls.Add(textBoxArbeitspfad);
+            Controls.Add(label5);
+            Controls.Add(label1);
             Controls.Add(buttonXMLOeffenen);
             Controls.Add(labelImportierteFragen);
-            Controls.Add(buttonPraefixwahl);
-            Controls.Add(buttonPfadwahl);
             Controls.Add(groupBoxVorschau);
             Controls.Add(buttonImport);
-            Controls.Add(textBoxPfad);
-            Controls.Add(label5);
             Controls.Add(textBoxDefaultgrade);
             Controls.Add(textBoxPenalty);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(numericUpDownAnzahlFragen);
             Controls.Add(label2);
-            Controls.Add(textBoxPraefix);
-            Controls.Add(label1);
             Name = "ViewMain";
             Text = "MoodleQuizGenerator V0.2";
             ((System.ComponentModel.ISupportInitialize)numericUpDownAnzahlFragen).EndInit();
@@ -410,17 +392,12 @@
         }
 
         #endregion
-
-        private Label label1;
-        private TextBox textBoxPraefix;
         private Label label2;
         private NumericUpDown numericUpDownAnzahlFragen;
         private Label label3;
         private Label label4;
         private TextBox textBoxPenalty;
         private TextBox textBoxDefaultgrade;
-        private Label label5;
-        private TextBox textBoxPfad;
         private Button buttonImport;
         private GroupBox groupBoxVorschau;
         private Button buttonZurueck;
@@ -431,8 +408,6 @@
         private CheckBox checkBoxAntwort1;
         private Label labelFrage;
         private Button buttonVor;
-        private Button buttonPfadwahl;
-        private Button buttonPraefixwahl;
         private TextBox textBoxAntwort5;
         private TextBox textBoxAntwort4;
         private TextBox textBoxAntwort3;
@@ -444,5 +419,9 @@
         private Button buttonLoeschen;
         private Label labelImportierteFragen;
         private Button buttonXMLOeffenen;
+        private Label label1;
+        private Label label5;
+        private TextBox textBoxArbeitspfad;
+        private TextBox textBoxPraefix;
     }
 }
