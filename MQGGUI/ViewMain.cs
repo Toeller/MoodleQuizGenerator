@@ -7,7 +7,7 @@ namespace MQGGUI
     {
         private IModel modelQuelle;
         private IModel modelZiel;
-        private List<Quizfrage> quizfrageList;
+        private List<Quizfrage> quizfrageList = [];
         private Quizfrage aktueleQuizfrage;
         private int index;
         private ViewImport viewImportDialog;
