@@ -333,6 +333,11 @@ namespace MQGGUI
 
         private void buttonLoeschen_Click(object sender, EventArgs e)
         {
+            if (quizfrageList.Count == 0)
+            { 
+                MessageBox.Show("Die Frage, die Sie zu löschen versuchen, existiert nicht.", "Fehler");
+                return;
+            }
             quizfrageList.RemoveAt(index);
             (modelZiel as ModelXML).Path = textBoxArbeitspfad.Text + "\\" + textBoxPraefix.Text.Split("2")[0] + DateTime.Now.ToString("yyMMdd") + ".xml";
 
