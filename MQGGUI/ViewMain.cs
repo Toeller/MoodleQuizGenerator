@@ -116,6 +116,11 @@ namespace MQGGUI
 
         private void buttonBearbeiten_Click(object sender, EventArgs e)
         {
+            if (aktuelleQuizfrage == null)
+            {
+                MessageBox.Show("Keine Frage zur Bearbeitung ausgewählt.", "Fehler");
+                return;
+            }
             if (buttonBearbeiten.Text == "bearbeiten")
             {
                 fuellenTextBoxen();
