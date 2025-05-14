@@ -18,7 +18,6 @@ namespace MQGGUI
         }
 
 
-
         IModel IView.ModelQuelle { set => modelQuelle = value; }
         IController IView.Controller { set => throw new NotImplementedException(); }
         IModel IView.ModelZiel { set => modelZiel = value; }
