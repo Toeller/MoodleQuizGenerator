@@ -192,6 +192,12 @@ namespace MQGGUI
             }
             else
             {
+                if (string.IsNullOrEmpty(textBoxArbeitspfad.Text) || string.IsNullOrEmpty(textBoxPraefix.Text))
+                {
+                    MessageBox.Show("Keine Arbeitspfad oder Output Datei gewaehlt.", "Fehler");
+                    return;
+                }
+
                 buttonNeu.Text = "neu..";
                 Quizfrage quizfrage = new Quizfrage();
                 quizfrage.AnzahlAntworten = 5;
