@@ -59,6 +59,7 @@
             label5 = new Label();
             textBoxArbeitspfad = new TextBox();
             textBoxPraefix = new TextBox();
+            buttonNeuXML = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAnzahlFragen).BeginInit();
             groupBoxVorschau.SuspendLayout();
             SuspendLayout();
@@ -388,11 +389,23 @@
             textBoxPraefix.Size = new Size(925, 30);
             textBoxPraefix.TabIndex = 20;
             // 
+            // buttonNeuXML
+            // 
+            buttonNeuXML.Font = new Font("Segoe UI", 12F);
+            buttonNeuXML.Location = new Point(368, 17);
+            buttonNeuXML.Margin = new Padding(3, 4, 3, 4);
+            buttonNeuXML.Name = "buttonNeuXML";
+            buttonNeuXML.Size = new Size(171, 53);
+            buttonNeuXML.TabIndex = 21;
+            buttonNeuXML.Text = "neu: XML";
+            buttonNeuXML.UseVisualStyleBackColor = true;
+            // 
             // ViewMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 815);
+            Controls.Add(buttonNeuXML);
             Controls.Add(textBoxPraefix);
             Controls.Add(textBoxArbeitspfad);
             Controls.Add(label5);
@@ -449,5 +462,6 @@
         private Label label5;
         private TextBox textBoxArbeitspfad;
         private TextBox textBoxPraefix;
+        private Button buttonNeuXML;
     }
 }
