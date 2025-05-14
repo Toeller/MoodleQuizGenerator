@@ -399,6 +399,7 @@
             buttonNeuXML.TabIndex = 21;
             buttonNeuXML.Text = "neu: XML";
             buttonNeuXML.UseVisualStyleBackColor = true;
+            buttonNeuXML.Click += buttonNeuXML_Click;
             // 
             // ViewMain
             // 

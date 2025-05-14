@@ -1,4 +1,7 @@
 using MoodleQuizGenerator;
+using System.IO;
+using System.Security.Cryptography;
+using System.Windows.Forms;
 
 
 namespace MQGGUI
@@ -344,6 +347,22 @@ namespace MQGGUI
 
             Index = 0;
             labelImportierteFragen.Text = "Fragen: " + questioncount;
+        }
+
+        private void buttonNeuXML_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+            sfd.FilterIndex = 1;
+            sfd.RestoreDirectory = true;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                string[] fileNameSplitted = sfd.FileName.Split("\\");
+                textBoxArbeitspfad.Text = String.Join("\\", fileNameSplitted.Take(fileNameSplitted.Count() - 1).ToArray());
+                textBoxPraefix.Text = fileNameSplitted.Last().Replace(".xml", "");
+            }
         }
     }
 }
